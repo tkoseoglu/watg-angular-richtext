@@ -12,6 +12,10 @@
     "richtext",
     "WSIWYG"
   ],
+  "main": [
+    "dist/js/watg-angular-richtext.js",
+    "dist/js/watg-angular-richtext.tpl.js"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
