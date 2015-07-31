@@ -1,46 +1,120 @@
 /**
  * Created by Kemal on 07/31/15.
  */
+var watgRichtext = angular.module('watgRichtext', ['ngRoute', 'ngSanitize', 'watgRichtext.templates'])
+    .config(function ($routeProvider, $httpProvider) {
 
-    var watgRichtext = angular.module('watgRichtext', ['ngRoute', 'ngSanitize', 'watgRichtext.templates'])
-        .config(function ($routeProvider, $httpProvider) {
-
-            $routeProvider
-                .when('/',
-                {
-                    templateUrl: 'app/views/test.html',
-                    controller: 'testController'
-                })
-                .otherwise({redirectTo: '/'});
-        });
-
-
-
+        $routeProvider
+            .when('/',
+            {
+                templateUrl: 'app/views/test.html',
+                controller: 'testController'
+            })
+            .otherwise({redirectTo: '/'});
+    });
 /**
  * Created by Kemal on 07/31/15.
  */
-
 watgRichtext.controller('testController',
     function testController($scope) {
         $scope.header = 'Richtext';
 
         $scope.item = {
             Content: ''
+        };
+
+
+        $scope.fontSizes = [{
+            fontSizeName: 'Huge',
+            fontSize: 7
+        }, {
+            fontSizeName: 'Big',
+            fontSize: 5
+        }, {
+            fontSizeName: 'Normal',
+            fontSize: 3
+        }, {
+            fontSizeName: 'Small',
+            fontSize: 1
         }
+        ];
+        $scope.fontFamilies = [{
+            fontName: 'Arial'
+        }, {
+            fontName: 'Calibri'
+        }, {
+            fontName: 'Time New Roman'
+        }, {
+            fontName: 'Palatino Linotype'
+        }
+        ];
+        $scope.colors = [{
+            colorName: 'Black',
+            colorValue: '000000'
+        }, {
+            colorName: 'Silver',
+            colorValue: 'C0C0C0'
+        }, {
+            colorName: 'Gray',
+            colorValue: '808080'
+        }, {
+            colorName: 'White',
+            colorValue: 'FFFFFF'
+        }, {
+            colorName: 'Maroon',
+            colorValue: '800000'
+        }, {
+            colorName: 'Red',
+            colorValue: 'FF0000'
+        }, {
+            colorName: 'Purple',
+            colorValue: '800080'
+        }, {
+            colorName: 'Fuchsia',
+            colorValue: 'FF00FF'
+        }, {
+            colorName: 'Green',
+            colorValue: '008000'
+        }, {
+            colorName: 'Lime',
+            colorValue: '00ff00'
+        }, {
+            colorName: 'Olive',
+            colorValue: '808000'
+        }, {
+            colorName: 'Yellow',
+            colorValue: 'ffff00'
+        }, {
+            colorName: 'Navy',
+            colorValue: '000080'
+        }, {
+            colorName: 'Blue',
+            colorValue: '0000FF'
+        }, {
+            colorName: 'Teal',
+            colorValue: '008080'
+        }, {
+            colorName: 'Aqua',
+            colorValue: '00ffff'
+        }
+        ];
+
     }
 );
 
 /**
  * Created by Kemal on 07/31/15.
  */
-
 watgRichtext.directive('watgRichtextEditor', function () {
     return {
         restrict: 'E',
         templateUrl: 'app/templates/watgRichtextEditorTemplate.html',
         scope: {
             richText: '=richText',
-            variables: '='
+            variables: '=',
+            fontFamilies: '=',
+            fontSizes: '=',
+            colors: '='
         },
         link: function (scope, element) {
 
@@ -51,67 +125,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
             var watchCounter = 0;
 
             scope.menuEnabled = false;
-            scope.fonts = [{
-                fontName: 'Arial'
-            }, {
-                fontName: 'Calibri'
-            }, {
-                fontName: 'Time New Roman'
-            }, {
-                fontName: 'Palatino Linotype'
-            }
-            ];
-            scope.colors = [{
-                colorName: 'Black',
-                colorValue: '000000'
-            }, {
-                colorName: 'Silver',
-                colorValue: 'C0C0C0'
-            }, {
-                colorName: 'Gray',
-                colorValue: '808080'
-            }, {
-                colorName: 'White',
-                colorValue: 'FFFFFF'
-            }, {
-                colorName: 'Maroon',
-                colorValue: '800000'
-            }, {
-                colorName: 'Red',
-                colorValue: 'FF0000'
-            }, {
-                colorName: 'Purple',
-                colorValue: '800080'
-            }, {
-                colorName: 'Fuchsia',
-                colorValue: 'FF00FF'
-            }, {
-                colorName: 'Green',
-                colorValue: '008000'
-            }, {
-                colorName: 'Lime',
-                colorValue: '00ff00'
-            }, {
-                colorName: 'Olive',
-                colorValue: '808000'
-            }, {
-                colorName: 'Yellow',
-                colorValue: 'ffff00'
-            }, {
-                colorName: 'Navy',
-                colorValue: '000080'
-            }, {
-                colorName: 'Blue',
-                colorValue: '0000FF'
-            }, {
-                colorName: 'Teal',
-                colorValue: '008080'
-            }, {
-                colorName: 'Aqua',
-                colorValue: '00ffff'
-            }
-            ];
-
 
             scope.$watch('richText', function () {
                 if (scope.richText && watchCounter === 0) {
@@ -124,10 +137,23 @@ watgRichtext.directive('watgRichtextEditor', function () {
                     scope.menuEnabled = false;
 
             });
-
             scope.$watch('variables', function () {
 
             });
+            scope.$watch('fontFamilies', function () {
+
+            });
+            scope.$watch('fontSizes', function () {
+
+            });
+            scope.$watch('colors', function () {
+
+            });
+
+            console.log(scope.variables);
+            console.log(scope.fontFamilies);
+            console.log(scope.fontSizes);
+            console.log(scope.colors);
 
             //initialize
             scope.initialize = function () {
