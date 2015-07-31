@@ -1,8 +1,11 @@
 {
   "name": "watg-angular-richtext",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "WATG richtext editor for angularjs applications",
-  "main": "index.js",
+  "main": [
+    "dist/js/watg-angular-richtext.js",
+    "dist/js/watg-angular-richtext.tpl.js"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
