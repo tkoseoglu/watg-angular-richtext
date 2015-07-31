@@ -147,7 +147,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                     editorHead = editorDoc.head;
                     if (editorHead != null) {
-                        editorHead.innerHTML = "<link href='../dev/css/vendor.min.css' rel='stylesheet'/>";
+                        editorHead.innerHTML = "<link href='../dist/css/watg-angular-richtext.min.css' rel='stylesheet'/>";
                     }
 
                     editorBody = editorDoc.body;
