@@ -1,8 +1,5 @@
-body {
-    font-family: Helvetica, Arial, sans-serif !important;
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #393939;
+.pointer {
+    cursor: pointer;
 }
 
 .watgRichtext {
