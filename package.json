@@ -1,0 +1,30 @@
+{
+  "name": "watg-angular-richtext",
+  "version": "1.0.0",
+  "description": "WATG richtext editor for angularjs applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tkoseoglu/watg-angular-richtext.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkoseoglu/watg-angular-richtext/issues"
+  },
+  "homepage": "https://github.com/tkoseoglu/watg-angular-richtext",
+  "devDependencies": {
+    "bower-files": "^3.7.0",
+    "grunt": "^0.4.5",
+    "grunt-concat-css": "^0.3.1",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-html2js": "^0.3.3"
+  }
+}

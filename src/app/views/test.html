@@ -1,0 +1,16 @@
+<h2>{{header}}</h2>
+
+
+<watg-richtext-editor
+             rich-text="item.Content"
+             variables="variables"
+             required></watg-richtext-editor>
+
+<br>
+<br>
+
+<h3>Output</h3>
+
+<div ng-bind-html="item.Content">
+
+</div>
