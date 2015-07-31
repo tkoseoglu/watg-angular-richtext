@@ -1,6 +1,6 @@
 {
   "name": "watg-angular-richtext",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "WATG richtext editor for angularjs applications",
   "main": [
     "dist/js/watg-angular-richtext.js",
