@@ -169,7 +169,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                     editorHead = editorDoc.head;
                     if (editorHead != null) {
-                        editorHead.innerHTML = "<link href='" + cssPath + "' rel='stylesheet'/>";
+                        editorHead.innerHTML = "<link href='" + scope.cssPath + "' rel='stylesheet'/>";
                     }
 
                     editorBody = editorDoc.body;
