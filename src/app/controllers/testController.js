@@ -9,6 +9,8 @@ watgRichtext.controller('testController',
             Content: ''
         };
 
+        $scope.editorHeight = 50;
+
 
         $scope.fontSizes = [{
             fontSizeName: 'Huge',

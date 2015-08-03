@@ -5,7 +5,7 @@
 .watgRichtext {
     display: block;
     width: 100%;
-    min-height: 350px;
+    /*min-height: 350px;*/
     overflow: hidden;
     padding: 6px 12px;
     font-size: 14px;

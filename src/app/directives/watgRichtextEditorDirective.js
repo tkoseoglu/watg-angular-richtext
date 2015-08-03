@@ -10,7 +10,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
             variables: '=',
             fontFamilies: '=',
             fontSizes: '=',
-            colors: '='
+            colors: '=',
+            height: '='
         },
         link: function (scope, element) {
 
@@ -160,6 +161,11 @@ watgRichtext.directive('watgRichtextEditor', function () {
                     }
 
                     editorBody = editorDoc.body;
+
+                    if (!scope.height)
+                        scope.height = 300;
+
+                    $(editor).css('height', scope.height);
 
                     // turn off spellcheck
                     if ('spellcheck' in editorBody) {    // Firefox
