@@ -11,7 +11,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
             fontFamilies: '=',
             fontSizes: '=',
             colors: '=',
-            height: '='
+            height: '=',
+            cssPath: '='
         },
         link: function (scope, element) {
 
@@ -155,9 +156,12 @@ watgRichtext.directive('watgRichtextEditor', function () {
                     else
                         editorDoc = editor.contentWindow.document;
 
+                    if (!scope.cssPath)
+                        scope.cssPath = 'public/css/vendor.min.css';
+
                     editorHead = editorDoc.head;
                     if (editorHead != null) {
-                        editorHead.innerHTML = "<link href='bower_components/bootstrap/dist/css/bootstrap.css' rel='stylesheet'/>";
+                        editorHead.innerHTML = "<link href='" + cssPath + "' rel='stylesheet'/>";
                     }
 
                     editorBody = editorDoc.body;
