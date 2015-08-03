@@ -8,13 +8,13 @@ module.exports = function (grunt) {
         concat: {
             appdist: {
                 src: ['src/app/appdist.js',
-                      'src/app/directives/watgRichtextEditorDirective.js'],
+                    'src/app/directives/watgRichtextEditorDirective.js'],
                 dest: 'dist/js/watg-angular-richtext.js'
             },
             app: {
                 src: ['src/app/app.js',
-                      'src/app/controllers/testController.js',
-                      'src/app/directives/watgRichtextEditorDirective.js'],
+                    'src/app/controllers/testController.js',
+                    'src/app/directives/watgRichtextEditorDirective.js'],
                 dest: 'dev/js/watg-angular-richtext.js'
             },
             vendor: {
@@ -79,7 +79,7 @@ module.exports = function (grunt) {
         },
         watch: {
             files: ['src/app/**/*.js', 'src/assets/*.css'],
-            tasks: ['concat:app','concat:appdist', 'uglify', 'concat_css', 'cssmin:assets', 'cssmin:assetsdist']
+            tasks: ['concat:app', 'concat:appdist', 'uglify', 'concat_css', 'cssmin:assets', 'cssmin:assetsdist']
         },
         copy: {
             main: {
@@ -133,7 +133,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'concat_css', 'cssmin', 'copy']);
+    grunt.registerTask('default', ['concat', 'uglify', 'concat_css', 'cssmin', 'watch', 'copy']);
     grunt.registerTask('dist', ['concat:appdist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', 'html2js']);
 
 

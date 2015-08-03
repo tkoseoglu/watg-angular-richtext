@@ -2,7 +2,7 @@
  * Created by Kemal on 07/31/15.
  */
 var watgRichtext = angular.module('watgRichtext', ['ngRoute', 'ngSanitize', 'watgRichtext.templates'])
-    .config(function ($routeProvider, $httpProvider) {
+    .config(function ($routeProvider) {
 
         $routeProvider
             .when('/',
@@ -125,16 +125,25 @@ watgRichtext.directive('watgRichtextEditor', function () {
             var watchCounter = 0;
 
             scope.menuEnabled = false;
+            scope.showSourceEditor = false;
+            scope.richTextSource = scope.richText;
 
             scope.$watch('richText', function () {
+                console.log('rich text changed');
                 if (scope.richText && watchCounter === 0) {
                     editorDoc.body.innerHTML = scope.richText;
+                    scope.richTextSource = scope.richText;
                     watchCounter++;
                 }
                 if (scope.richText)
                     scope.menuEnabled = true;
                 else
                     scope.menuEnabled = false;
+            });
+            scope.$watch('richTextSource', function () {
+                console.log('rich text source changed');
+                scope.richText = scope.richTextSource;
+                editorDoc.body.innerHTML = scope.richTextSource;
 
             });
             scope.$watch('variables', function () {

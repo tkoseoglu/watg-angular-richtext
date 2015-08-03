@@ -1,54 +1,55 @@
 <!--variables-->
-<div class="btn-group" ng-hide="variables === undefined || variables.length === 0">
+<div class="btn-group"
+     ng-hide="variables === undefined || variables.length === 0">
     <a class="btn btn-danger dropdown-toggle"
        data-toggle="dropdown"
        ng-disabled="!menuEnabled"
-       title="Variables">
-        <i class="fa fa-book"></i>&nbsp;<b class="caret"></b>
-    </a>
+       title="Variables"> <i class="fa fa-book"></i>&nbsp;<b class="caret"></b> </a>
     <ul class="dropdown-menu">
         <li ng-repeat="v in variables">
             <a ng-click="applyRichText('insertText', v.Name)">{{v.Name}}</a>
         </li>
     </ul>
-</div>
-<!--fontFamily-->
-<div class="btn-group" ng-hide="fontFamilies === undefined || fontFamilies.length === 0">
+</div><!--fontFamily-->
+<div class="btn-group"
+     ng-hide="fontFamilies === undefined || fontFamilies.length === 0">
     <a class="btn btn-primary dropdown-toggle"
        data-toggle="dropdown"
        title="Font Size"
        ng-disabled="!menuEnabled"><i class="fa fa-font"></i>&nbsp;<b class="caret"></b></a>
     <ul class="dropdown-menu">
         <li ng-repeat="f in fontFamilies">
-            <a title="{{f.fontName}}" ng-click="applyRichText('fontName', f.fontName)">
-                <font ng-style="{'font-family': f.fontName}">{{f.fontName}}</font>
-            </a>
+            <a title="{{f.fontName}}"
+               ng-click="applyRichText('fontName', f.fontName)">
+                <font ng-style="{'font-family': f.fontName}">{{f.fontName}}</font> </a>
         </li>
     </ul>
-</div>
-<!--fontSize-->
-<div class="btn-group" ng-hide="fontSizes === undefined || fontSizes.length === 0">
+</div><!--fontSize-->
+<div class="btn-group"
+     ng-hide="fontSizes === undefined || fontSizes.length === 0">
     <a class="btn btn-primary dropdown-toggle"
        data-toggle="dropdown"
        title="Font"
        ng-disabled="!menuEnabled"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
     <ul class="dropdown-menu">
         <li ng-repeat="f in fontSizes">
-            <a ng-click="applyRichText('fontSize', f.fontSize)">
-                <font size="{{f.fontSize}}">{{f.fontSizeName}}</font>
+            <a ng-click="applyRichText('fontSize', f.fontSize)"> <font size="{{f.fontSize}}">{{f.fontSizeName}}</font>
             </a>
         </li>
     </ul>
-</div>
-<!--colors-->
-<div class="btn-group" ng-hide="colors === undefined || colors.length === 0">
+</div><!--colors-->
+<div class="btn-group"
+     ng-hide="colors === undefined || colors.length === 0">
     <a class="btn btn-primary dropdown-toggle"
        data-toggle="dropdown"
        title="Font Color"
        ng-disabled="!menuEnabled"><i class="fa fa-paint-brush"></i>&nbsp;<b class="caret"></b></a>
     <ul class="dropdown-menu">
-        <li ng-repeat="c in colors" ng-style="{'background-color': '#' + c.colorValue}">
-            <span title="{{c.colorName}}" ng-click="applyRichText('forecolor', c.colorValue)" class="pointer">
+        <li ng-repeat="c in colors"
+            ng-style="{'background-color': '#' + c.colorValue}">
+            <span title="{{c.colorName}}"
+                  ng-click="applyRichText('forecolor', c.colorValue)"
+                  class="pointer">
                 <font>{{c.colorName}}</font>
             </span>
         </li>
@@ -147,8 +148,25 @@
             class="btn btn-primary"
             title="Remove Hyperlink"
             ng-click="applyRichText('unlink', null)"><i class="fa fa-cut"></i></button>
-</div><br/>
-<iframe class="watgRichtext"></iframe>
+</div>
+<div class="btn-group">
+    <button ng-click="showSourceEditor = !showSourceEditor"
+            type="button"
+            class="btn btn-primary"
+            title="Edit source">
+        <i class="fa fa-code"></i>
+    </button>
+</div>
+<div>
+    <iframe class="watgRichtext"
+            ng-hide="showSourceEditor"></iframe>
+    <textarea ng-model="richTextSource"
+              class="form-control"
+              rows="10"
+              ng-show="showSourceEditor"></textarea>
+</div>
+
+
 <div id="hyperlinkModal"
      class="modal fade">
     <div class="modal-dialog">
