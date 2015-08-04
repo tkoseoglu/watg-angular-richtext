@@ -46,6 +46,9 @@ $scope.richTextConfig = {
             showFontSelector: false,                          //an array of font families
             showFontSizeSelector: false,                      //an array of font sizes
             showColorSelector: false,                         //an array of colors
+            fontSizes: myFontSizes,
+            fontFamilies: myFontFamilies,
+            colors: myColors,            
             showBold: false,
             showItalic: false,
             showStrikeThrough: false,
@@ -69,7 +72,7 @@ $scope.richTextConfig = {
 ## Pick lists examples
 
 ```js
-var fontSizes: [{
+var myFontSizes: [{
     fontSizeName: 'Huge',
     fontSize: 7
 }, {
@@ -83,7 +86,7 @@ var fontSizes: [{
     fontSize: 1
 }];
 
-var fontFamilies: [{
+var myFontFamilies: [{
     fontName: 'Arial'
 }, {
     fontName: 'Calibri'
@@ -93,7 +96,7 @@ var fontFamilies: [{
     fontName: 'Palatino Linotype'
 }];
 
-var colors: [{
+var myColors: [{
     colorName: 'Black',
     colorValue: '000000'
 }, {
