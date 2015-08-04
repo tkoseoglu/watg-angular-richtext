@@ -25,7 +25,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
             var editorBody;
             var watchCounter = 0;
             var defaultHeight = 300;
-            var defaultBootstrapCssPath = 'public/css/vendor.min.css';
             var singleLineMaxLength = 150;
 
             scope.menuEnabled = false;
@@ -155,11 +154,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
                     else
                         editorDoc = editor.contentWindow.document;
 
-                    if (!scope.config.bootstrapCssPath)
-                        scope.config.bootstrapCssPath = defaultBootstrapCssPath;
-
                     editorHead = editorDoc.head;
-                    if (editorHead != null) {
+                    if (editorHead != null && !scope.config.bootstrapCssPath) {
                         editorHead.innerHTML = "<link href='" + scope.config.bootstrapCssPath + "' rel='stylesheet'/>";
                     }
 
