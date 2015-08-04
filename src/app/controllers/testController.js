@@ -11,7 +11,7 @@ watgRichtext.controller('testController',
 
         //all optional
         $scope.watgRichTextConfig = {
-            height: 50,             //default 300
+            height: 35,             //default 300
             multiLine: false,       //default true
             bootstrapCssPath: '../bower_components/bootstrap/dist/css/bootstrap.min.css',
             fontSizes: [{

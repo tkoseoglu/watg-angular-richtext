@@ -18,6 +18,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
             var watchCounter = 0;
             var defaultHeight = 300;
             var defaultBootstrapCssPath = 'public/css/vendor.min.css';
+            var singleLineMaxLength = 150;
 
             scope.menuEnabled = false;
             scope.showSourceEditor = false;
@@ -159,11 +160,14 @@ watgRichtext.directive('watgRichtextEditor', function () {
                     if (!scope.config.height)
                         scope.config.height = defaultHeight;
 
-                    $(editor).css('height', scope.height);
-                    $("#richTextSource").css('height', scope.height);
+                    $(editor).css('height', scope.config.height);
+                    $("#richTextSource").css('height', scope.config.height);
 
-                    if (scope.config.multiLine === false)
-                        $(editor).attr('maxlength', '10');
+                    if (scope.config.multiLine === false) {
+                        $(editor).attr('maxLength', '10');
+                        $(editorBody).attr('maxLength', '10');
+                    }
+
 
                     if ('spellcheck' in editorBody)
                         editorBody.spellcheck = false;
@@ -179,6 +183,21 @@ watgRichtext.directive('watgRichtextEditor', function () {
                         editorDoc.body.innerHTML = scope.richText;
 
                     //iFrame events
+                    $(editor.contentWindow.document).keydown(function (e) {
+
+                        console.log(e);
+
+                        if (scope.config.multiLine === false) {
+                            //prevent ENTER key
+                            if (e.keyCode === 13) {
+                                e.preventDefault();
+                            }
+                            if (scope.richText.length > singleLineMaxLength && e.keyCode !== 8 && e.keyCode !== 35 && e.keyCode !== 36 && e.keyCode !== 46) {
+                                e.preventDefault();
+                            }
+                        }
+
+                    });
                     $(editor.contentWindow.document).keyup(function () {
                         scope.update();
                     });
