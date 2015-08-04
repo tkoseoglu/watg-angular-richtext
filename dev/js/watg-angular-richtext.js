@@ -23,83 +23,105 @@ watgRichtext.controller('testController',
             Content: ''
         };
 
-        $scope.editorHeight = 50;
-
-
-        $scope.fontSizes = [{
-            fontSizeName: 'Huge',
-            fontSize: 7
-        }, {
-            fontSizeName: 'Big',
-            fontSize: 5
-        }, {
-            fontSizeName: 'Normal',
-            fontSize: 3
-        }, {
-            fontSizeName: 'Small',
-            fontSize: 1
-        }
-        ];
-        $scope.fontFamilies = [{
-            fontName: 'Arial'
-        }, {
-            fontName: 'Calibri'
-        }, {
-            fontName: 'Time New Roman'
-        }, {
-            fontName: 'Palatino Linotype'
-        }
-        ];
-        $scope.colors = [{
-            colorName: 'Black',
-            colorValue: '000000'
-        }, {
-            colorName: 'Silver',
-            colorValue: 'C0C0C0'
-        }, {
-            colorName: 'Gray',
-            colorValue: '808080'
-        }, {
-            colorName: 'White',
-            colorValue: 'FFFFFF'
-        }, {
-            colorName: 'Maroon',
-            colorValue: '800000'
-        }, {
-            colorName: 'Red',
-            colorValue: 'FF0000'
-        }, {
-            colorName: 'Purple',
-            colorValue: '800080'
-        }, {
-            colorName: 'Fuchsia',
-            colorValue: 'FF00FF'
-        }, {
-            colorName: 'Green',
-            colorValue: '008000'
-        }, {
-            colorName: 'Lime',
-            colorValue: '00ff00'
-        }, {
-            colorName: 'Olive',
-            colorValue: '808000'
-        }, {
-            colorName: 'Yellow',
-            colorValue: 'ffff00'
-        }, {
-            colorName: 'Navy',
-            colorValue: '000080'
-        }, {
-            colorName: 'Blue',
-            colorValue: '0000FF'
-        }, {
-            colorName: 'Teal',
-            colorValue: '008080'
-        }, {
-            colorName: 'Aqua',
-            colorValue: '00ffff'
-        }
-        ];
+        //all optional
+        $scope.watgRichTextConfig = {
+            height: 50,             //default 300
+            multiLine: false,       //default true
+            bootstrapCssPath: '../bower_components/bootstrap/dist/css/bootstrap.min.css',
+            fontSizes: [{
+                fontSizeName: 'Huge',
+                fontSize: 7
+            }, {
+                fontSizeName: 'Big',
+                fontSize: 5
+            }, {
+                fontSizeName: 'Normal',
+                fontSize: 3
+            }, {
+                fontSizeName: 'Small',
+                fontSize: 1
+            }],
+            fontFamilies: [{
+                fontName: 'Arial'
+            }, {
+                fontName: 'Calibri'
+            }, {
+                fontName: 'Time New Roman'
+            }, {
+                fontName: 'Palatino Linotype'
+            }],
+            colors: [{
+                colorName: 'Black',
+                colorValue: '000000'
+            }, {
+                colorName: 'Silver',
+                colorValue: 'C0C0C0'
+            }, {
+                colorName: 'Gray',
+                colorValue: '808080'
+            }, {
+                colorName: 'White',
+                colorValue: 'FFFFFF'
+            }, {
+                colorName: 'Maroon',
+                colorValue: '800000'
+            }, {
+                colorName: 'Red',
+                colorValue: 'FF0000'
+            }, {
+                colorName: 'Purple',
+                colorValue: '800080'
+            }, {
+                colorName: 'Fuchsia',
+                colorValue: 'FF00FF'
+            }, {
+                colorName: 'Green',
+                colorValue: '008000'
+            }, {
+                colorName: 'Lime',
+                colorValue: '00ff00'
+            }, {
+                colorName: 'Olive',
+                colorValue: '808000'
+            }, {
+                colorName: 'Yellow',
+                colorValue: 'ffff00'
+            }, {
+                colorName: 'Navy',
+                colorValue: '000080'
+            }, {
+                colorName: 'Blue',
+                colorValue: '0000FF'
+            }, {
+                colorName: 'Teal',
+                colorValue: '008080'
+            }, {
+                colorName: 'Aqua',
+                colorValue: '00ffff'
+            }
+            ],
+            showVariablesSelector:false,
+            showFontSelector:false,
+            showFontSizeSelector:false,
+            showColorSelector:false,
+            showBold:false,
+            showItalic:false,
+            showStrikeThrough:false,
+            showUnderline:false,
+            showUnorderedList:false,
+            showOrderedList:false,
+            showReduceIndent:false,
+            showIndent:false,
+            showLeftAlign:false,
+            showCenterAlign:false,
+            showRightAlign:false,
+            showJustify:false,
+            showUndo:false,
+            showRedo:false,
+            showInsertLink:false,
+            showRemoveLink:false,
+            showSourceCode:false
+        };
 
     }
 );
@@ -113,12 +135,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
         templateUrl: 'app/templates/watgRichtextEditorTemplate.html',
         scope: {
             richText: '=richText',
-            variables: '=',
-            fontFamilies: '=',
-            fontSizes: '=',
-            colors: '=',
-            height: '=',
-            cssPath: '='
+            config: '='
         },
         link: function (scope, element) {
 
@@ -127,6 +144,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
             var editorHead;
             var editorBody;
             var watchCounter = 0;
+            var defaultHeight = 300;
+            var defaultBootstrapCssPath = 'public/css/vendor.min.css';
 
             scope.menuEnabled = false;
             scope.showSourceEditor = false;
@@ -150,21 +169,21 @@ watgRichtext.directive('watgRichtextEditor', function () {
                 editorDoc.body.innerHTML = scope.richTextSource;
 
             });
-            scope.$watch('variables', function () {
+            scope.$watch('config.variables', function () {
 
             });
-            scope.$watch('fontFamilies', function () {
+            scope.$watch('config.fontFamilies', function () {
 
             });
-            scope.$watch('fontSizes', function () {
+            scope.$watch('config.fontSizes', function () {
 
             });
-            scope.$watch('colors', function () {
+            scope.$watch('config.colors', function () {
 
             });
 
-            if (scope.fontFamilies === undefined) {
-                scope.fontFamilies = [{
+            if (scope.config.fontFamilies === undefined) {
+                scope.config.fontFamilies = [{
                     fontName: 'Arial'
                 }, {
                     fontName: 'Calibri'
@@ -176,8 +195,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
                 ];
             }
 
-            if (scope.fontSizes == undefined) {
-                scope.fontSizes = [{
+            if (scope.config.fontSizes == undefined) {
+                scope.config.fontSizes = [{
                     fontSizeName: 'Huge',
                     fontSize: 7
                 }, {
@@ -193,8 +212,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
                 ];
             }
 
-            if (scope.colors == undefined) {
-                scope.colors = [{
+            if (scope.config.colors == undefined) {
+                scope.config.colors = [{
                     colorName: 'Black',
                     colorValue: '000000'
                 }, {
@@ -246,56 +265,46 @@ watgRichtext.directive('watgRichtextEditor', function () {
                 ];
             }
 
-            console.log(scope.variables);
-            console.log(scope.fontFamilies);
-            console.log(scope.fontSizes);
-            console.log(scope.colors);
-
             //initialize
             scope.initialize = function () {
-
                 editor = element.find("iframe")[0];
-
                 if (editor) {
                     if (editor.contentDocument)
                         editorDoc = editor.contentDocument;
                     else
                         editorDoc = editor.contentWindow.document;
 
-                    if (!scope.cssPath)
-                        scope.cssPath = 'public/css/vendor.min.css';
+                    if (!scope.config.bootstrapCssPath)
+                        scope.config.bootstrapCssPath = defaultBootstrapCssPath;
 
                     editorHead = editorDoc.head;
                     if (editorHead != null) {
-                        editorHead.innerHTML = "<link href='" + scope.cssPath + "' rel='stylesheet'/>";
+                        editorHead.innerHTML = "<link href='" + scope.config.bootstrapCssPath + "' rel='stylesheet'/>";
                     }
 
                     editorBody = editorDoc.body;
 
-                    if (!scope.height)
-                        scope.height = 300;
+                    if (!scope.config.height)
+                        scope.config.height = defaultHeight;
 
                     $(editor).css('height', scope.height);
+                    $("#richTextSource").css('height', scope.height);
 
-                    // turn off spellcheck
-                    if ('spellcheck' in editorBody) {    // Firefox
+                    if (scope.config.multiLine === false)
+                        $(editor).attr('maxlength', '10');
+
+                    if ('spellcheck' in editorBody)
                         editorBody.spellcheck = false;
-                    }
 
-                    if ('contentEditable' in editorBody) {
-                        // allow contentEditable
+                    if ('contentEditable' in editorBody)
                         editorBody.contentEditable = true;
-                    }
-                    else {  // Firefox earlier than version 3
-                        if ('designMode' in editorDoc) {
-                            // turn on designMode
-                            editorDoc.designMode = "on";
-                        }
+                    else if ('designMode' in editorDoc) {
+                        // turn on designMode
+                        editorDoc.designMode = "on";
                     }
 
-                    if (scope.richText) {
+                    if (scope.richText)
                         editorDoc.body.innerHTML = scope.richText;
-                    }
 
                     //iFrame events
                     $(editor.contentWindow.document).keyup(function () {
@@ -308,7 +317,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
                 else {
                     console.error("Rich-text editor not found");
                 }
-
             };
             scope.update = function () {
 
@@ -319,20 +327,20 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                 }
             };
-
-            //tool bar events
             scope.applyRichText = function (action, details) {
                 try {
                     console.log('Action ' + action + ' Details ' + details);
+
+                    if (action === "createLink") {
+                        if (details.indexOf("http://") === -1)
+                            details = "http://" + details;
+                    }
+
                     editorDoc.execCommand(action, false, details);
                     scope.update();
                 } catch (e) {
 
                 }
-
-            };
-            scope.createLink = function () {
-                console.log('create link');
             };
 
             scope.initialize();
