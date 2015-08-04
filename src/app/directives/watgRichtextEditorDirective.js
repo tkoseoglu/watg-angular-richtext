@@ -147,7 +147,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
                         editorDoc = editor.contentWindow.document;
 
                     editorHead = editorDoc.head;
-                    if (editorHead != null && !scope.config.bootstrapCssPath) {
+                    if (editorHead != null && scope.config.bootstrapCssPath) {
                         editorHead.innerHTML = "<link href='" + scope.config.bootstrapCssPath + "' rel='stylesheet'/>";
                     }
 
