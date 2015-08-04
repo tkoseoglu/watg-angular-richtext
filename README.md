@@ -23,8 +23,10 @@ bower_components/watg-angular-richtext/dist/css/watg-angular-richtext.min.css
 
 ### Inject module in your app
 
+ngSanitize is a required module.
+
 ```js
-angular.module('myApp', ['...', 'watgRichtext']);
+angular.module('myApp', ['...', 'ngSanitize','watgRichtext']);
 ```
 
 ## Example
