@@ -14,8 +14,9 @@ watgRichtext.directive('watgRichtextEditor', function () {
         restrict: 'E',
         templateUrl: 'app/templates/watgRichtextEditorTemplate.html',
         scope: {
-            richText: '=richText',
-            config: '='
+            richText: '=',
+            config: '=',
+            resetCount: "="
         },
         link: function (scope, element) {
 
@@ -61,7 +62,16 @@ watgRichtext.directive('watgRichtextEditor', function () {
             scope.$watch('config.colors', function () {
 
             });
+            scope.$watchCollection('resetCount', function (newValue, oldValue) {
 
+                if(newValue.length > 0){
+                    console.log('Clearing rich-text');
+                    scope.richText = '';
+                    if (editorDoc)
+                        editorDoc.body.innerHTML = scope.richText;
+                }
+
+            });
             if (scope.config.fontFamilies === undefined) {
                 scope.config.fontFamilies = [{
                     fontName: 'Arial'
@@ -188,9 +198,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                     //iFrame events
                     $(editor.contentWindow.document).keydown(function (e) {
-
-                        console.log(e);
-
                         if (scope.config.multiLine === false) {
                             //prevent ENTER key
                             if (e.keyCode === 13) {
@@ -200,7 +207,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
                                 e.preventDefault();
                             }
                         }
-
                     });
                     $(editor.contentWindow.document).keyup(function () {
                         scope.update();
@@ -237,6 +243,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                 }
             };
+
 
             scope.initialize();
         }

@@ -6,13 +6,21 @@ watgRichtext.controller('testController',
         $scope.header = 'Richtext';
 
         $scope.item = {
-            Content: ''
+            Content: 'Bla Bla Bla <b>Tolga</b>'
+        };
+
+        $scope.resetCount = [];
+
+
+        $scope.doSomething = function () {
+            console.log('do something');
+            $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
         };
 
         //all optional
         $scope.watgRichTextConfig = {
-            height: 35,             //default 300
-            multiLine: false,       //default true
+            height: 200,             //default 300
+            multiLine: true,       //default true
             bootstrapCssPath: '../bower_components/bootstrap/dist/css/bootstrap.min.css',
             fontSizes: [{
                 fontSizeName: 'Huge',
@@ -86,27 +94,27 @@ watgRichtext.controller('testController',
                 colorValue: '00ffff'
             }
             ],
-            showVariablesSelector:false,
-            showFontSelector:false,
-            showFontSizeSelector:false,
-            showColorSelector:false,
-            showBold:false,
-            showItalic:false,
-            showStrikeThrough:false,
-            showUnderline:false,
-            showUnorderedList:false,
-            showOrderedList:false,
-            showReduceIndent:false,
-            showIndent:false,
-            showLeftAlign:false,
-            showCenterAlign:false,
-            showRightAlign:false,
-            showJustify:false,
-            showUndo:false,
-            showRedo:false,
-            showInsertLink:false,
-            showRemoveLink:false,
-            showSourceCode:false
+            showVariablesSelector: false,
+            showFontSelector: false,
+            showFontSizeSelector: false,
+            showColorSelector: false,
+            showBold: false,
+            showItalic: false,
+            showStrikeThrough: false,
+            showUnderline: false,
+            showUnorderedList: false,
+            showOrderedList: false,
+            showReduceIndent: false,
+            showIndent: false,
+            showLeftAlign: false,
+            showCenterAlign: false,
+            showRightAlign: false,
+            showJustify: false,
+            showUndo: false,
+            showRedo: false,
+            showInsertLink: false,
+            showRemoveLink: false,
+            showSourceCode: false
         };
 
     }

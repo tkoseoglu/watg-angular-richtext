@@ -20,13 +20,21 @@ watgRichtext.controller('testController',
         $scope.header = 'Richtext';
 
         $scope.item = {
-            Content: ''
+            Content: 'Bla Bla Bla <b>Tolga</b>'
+        };
+
+        $scope.resetCount = [];
+
+
+        $scope.doSomething = function () {
+            console.log('do something');
+            $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
         };
 
         //all optional
         $scope.watgRichTextConfig = {
-            height: 35,             //default 300
-            multiLine: false,       //default true
+            height: 200,             //default 300
+            multiLine: true,       //default true
             bootstrapCssPath: '../bower_components/bootstrap/dist/css/bootstrap.min.css',
             fontSizes: [{
                 fontSizeName: 'Huge',
@@ -100,27 +108,27 @@ watgRichtext.controller('testController',
                 colorValue: '00ffff'
             }
             ],
-            showVariablesSelector:false,
-            showFontSelector:false,
-            showFontSizeSelector:false,
-            showColorSelector:false,
-            showBold:false,
-            showItalic:false,
-            showStrikeThrough:false,
-            showUnderline:false,
-            showUnorderedList:false,
-            showOrderedList:false,
-            showReduceIndent:false,
-            showIndent:false,
-            showLeftAlign:false,
-            showCenterAlign:false,
-            showRightAlign:false,
-            showJustify:false,
-            showUndo:false,
-            showRedo:false,
-            showInsertLink:false,
-            showRemoveLink:false,
-            showSourceCode:false
+            showVariablesSelector: false,
+            showFontSelector: false,
+            showFontSizeSelector: false,
+            showColorSelector: false,
+            showBold: false,
+            showItalic: false,
+            showStrikeThrough: false,
+            showUnderline: false,
+            showUnorderedList: false,
+            showOrderedList: false,
+            showReduceIndent: false,
+            showIndent: false,
+            showLeftAlign: false,
+            showCenterAlign: false,
+            showRightAlign: false,
+            showJustify: false,
+            showUndo: false,
+            showRedo: false,
+            showInsertLink: false,
+            showRemoveLink: false,
+            showSourceCode: false
         };
 
     }
@@ -134,8 +142,9 @@ watgRichtext.directive('watgRichtextEditor', function () {
         restrict: 'E',
         templateUrl: 'app/templates/watgRichtextEditorTemplate.html',
         scope: {
-            richText: '=richText',
-            config: '='
+            richText: '=',
+            config: '=',
+            resetCount: "="
         },
         link: function (scope, element) {
 
@@ -181,7 +190,16 @@ watgRichtext.directive('watgRichtextEditor', function () {
             scope.$watch('config.colors', function () {
 
             });
+            scope.$watchCollection('resetCount', function (newValue, oldValue) {
 
+                if(newValue.length > 0){
+                    console.log('Clearing rich-text');
+                    scope.richText = '';
+                    if (editorDoc)
+                        editorDoc.body.innerHTML = scope.richText;
+                }
+
+            });
             if (scope.config.fontFamilies === undefined) {
                 scope.config.fontFamilies = [{
                     fontName: 'Arial'
@@ -308,9 +326,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                     //iFrame events
                     $(editor.contentWindow.document).keydown(function (e) {
-
-                        console.log(e);
-
                         if (scope.config.multiLine === false) {
                             //prevent ENTER key
                             if (e.keyCode === 13) {
@@ -320,7 +335,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
                                 e.preventDefault();
                             }
                         }
-
                     });
                     $(editor.contentWindow.document).keyup(function () {
                         scope.update();
@@ -357,6 +371,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
                 }
             };
+
 
             scope.initialize();
         }
