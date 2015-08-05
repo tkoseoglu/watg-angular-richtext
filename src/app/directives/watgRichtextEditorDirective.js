@@ -27,7 +27,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
             scope.richTextSource = scope.richText;
 
             scope.$watch('richText', function () {
-                console.log('rich text changed');
                 if (scope.richText && watchCounter === 0) {
                     editorDoc.body.innerHTML = scope.richText;
                     scope.richTextSource = scope.richText;
@@ -39,10 +38,8 @@ watgRichtext.directive('watgRichtextEditor', function () {
                     scope.menuEnabled = false;
             });
             scope.$watch('richTextSource', function () {
-                console.log('rich text source changed');
                 scope.richText = scope.richTextSource;
                 editorDoc.body.innerHTML = scope.richTextSource;
-
             });
             scope.$watch('config.variables', function () {
 
@@ -59,7 +56,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
             scope.$watchCollection('resetCount', function (newValue, oldValue) {
 
                 if (newValue.length > 0) {
-                    console.log('Clearing rich-text');
                     scope.richText = '';
                     if (editorDoc)
                         editorDoc.body.innerHTML = scope.richText;
@@ -224,8 +220,6 @@ watgRichtext.directive('watgRichtextEditor', function () {
             };
             scope.applyRichText = function (action, details) {
                 try {
-                    console.log('Action ' + action + ' Details ' + details);
-
                     if (action === "createLink") {
                         if (details.indexOf("http://") === -1)
                             details = "http://" + details;
