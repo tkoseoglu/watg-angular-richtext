@@ -1,9 +1,17 @@
 <h2>{{header}}</h2>
 
 
-<watg-richtext-editor rich-text="item.Content"
+<watg-richtext-editor id="'1'"
+                      rich-text="item.Content"
                       config="watgRichTextConfig"
                       reset-count="resetCount"></watg-richtext-editor>
+
+<br><br>
+
+<watg-richtext-editor id="'2'"
+                      rich-text="item.Content2"
+                      config="watgRichTextConfig"
+                      reset-count="resetCount2"></watg-richtext-editor>
 
 <br><br>
 
@@ -16,3 +24,7 @@
 <h3>Output</h3>
 
 <div ng-bind-html="item.Content"></div>
+
+<br><br>
+
+<div ng-bind-html="item.Content2"></div>

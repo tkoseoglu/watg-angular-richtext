@@ -6,11 +6,12 @@ watgRichtext.controller('testController',
         $scope.header = 'Richtext';
 
         $scope.item = {
-            Content: 'Bla Bla Bla <b>Tolga</b>'
+            Content: 'Bla Bla Bla <b>Tolga</b>',
+            Content2: 'Da da da <b>Charli</b>'
         };
 
         $scope.resetCount = [];
-
+        $scope.resetCount2 = [];
 
         $scope.doSomething = function () {
             console.log('do something');
@@ -94,7 +95,7 @@ watgRichtext.controller('testController',
                 colorValue: '00ffff'
             }
             ],
-            showVariablesSelector: false,
+            showVariablesSelector: true,
             showFontSelector: false,
             showFontSizeSelector: false,
             showColorSelector: false,
@@ -112,8 +113,8 @@ watgRichtext.controller('testController',
             showJustify: false,
             showUndo: false,
             showRedo: false,
-            showInsertLink: false,
-            showRemoveLink: false,
+            showInsertLink: true,
+            showRemoveLink: true,
             showSourceCode: false
         };
 

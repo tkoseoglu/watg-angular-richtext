@@ -14,6 +14,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
         restrict: 'E',
         templateUrl: 'app/templates/watgRichtextEditorTemplate.html',
         scope: {
+            id: "=",
             richText: '=',
             config: '=',
             resetCount: "="
@@ -28,6 +29,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
             var defaultHeight = 300;
             var singleLineMaxLength = 150;
 
+            scope.hyperlinkModalId = "hyperlinkeModal" + scope.id;
             scope.menuEnabled = false;
             scope.showSourceEditor = false;
             scope.richTextSource = scope.richText;
@@ -64,7 +66,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
             });
             scope.$watchCollection('resetCount', function (newValue, oldValue) {
 
-                if(newValue.length > 0){
+                if (newValue.length > 0) {
                     console.log('Clearing rich-text');
                     scope.richText = '';
                     if (editorDoc)
