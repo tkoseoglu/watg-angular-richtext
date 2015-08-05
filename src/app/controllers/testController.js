@@ -117,5 +117,6 @@ watgRichtext.controller('testController',
             showSourceCode: false
         };
 
+
     }
 );
