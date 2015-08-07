@@ -312,7 +312,7 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
 
                     if ('spellcheck' in editorBody)
-                        editorBody.spellcheck = false;
+                        editorBody.spellcheck = true;
 
                     if ('contentEditable' in editorBody)
                         editorBody.contentEditable = true;
