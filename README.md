@@ -43,7 +43,7 @@ The rich text variable on your controller
 The configuration setting for the control. See below for me details/examples
 
 #### reset-count
-An array that is being "watched". If changes, the control will "reset" (There is absolutely a better way of doing this.
+An array that is being "watched". If changed the control will "reset" (There is absolutely a better way of doing this.
 which I will develop in the next weeks/months)
 
 
@@ -61,6 +61,7 @@ which I will develop in the next weeks/months)
 
 $scope.resetCount = [];
         
+//a local action that forces editor to "reset"
 $scope.doSomething = function () {
     $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
 };
