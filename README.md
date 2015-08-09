@@ -31,15 +31,41 @@ angular.module('myApp', ['...', 'ngSanitize','watgRichtext']);
 
 ## Example
 
-### Step 1. Directive reference
+### Step 1. Directive Set-up
+
+#### Id
+Internal Id of the control. In case you have multiple controls on the same page
+
+#### rich-text
+The rich text variable on your controller
+
+#### config
+The configuration setting for the control. See below for me details/examples
+
+#### reset-count
+An array that is being "watched". If changes, the control will "reset" (There is absolutely a better way of doing this.
+which I will develop in the next weeks/months)
+
 
 ```html
-<watg-richtext-editor rich-text="myRichtext" config="richTextConfig"></watg-richtext-editor>
+<watg-richtext-editor
+                id="'myRTEditor'"
+                rich-text="myRichtext" 
+                config="richTextConfig"
+                reset-count="resetCount"></watg-richtext-editor>
 ```
 
-### Step 2. Configuration (optional)
+### Step 2. Configuration 
 
 ```js
+
+$scope.resetCount = [];
+        
+$scope.doSomething = function () {
+    $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
+};
+
+
 $scope.richTextConfig = {
             height: 300,                                      //height of the editor control default 300
             multiLine: true,                                  //default true
@@ -70,6 +96,8 @@ $scope.richTextConfig = {
             showSourceCode: false
         };
 ```
+
+
 
 ## Pick lists examples
 
