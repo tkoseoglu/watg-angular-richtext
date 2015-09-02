@@ -54,13 +54,13 @@ watgRichtext.directive('watgRichtextEditor', function () {
 
             });
             scope.$watchCollection('resetCount', function (newValue, oldValue) {
-
-                if (newValue.length > 0) {
-                    scope.richText = '';
-                    if (editorDoc)
-                        editorDoc.body.innerHTML = scope.richText;
+                if(newValue!==undefined){
+                    if (newValue.length > 0) {
+                        scope.richText = '';
+                        if (editorDoc)
+                            editorDoc.body.innerHTML = scope.richText;
+                    }
                 }
-
             });
             if (scope.config.fontFamilies === undefined) {
                 scope.config.fontFamilies = [{

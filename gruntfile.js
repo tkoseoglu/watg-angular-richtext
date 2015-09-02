@@ -44,6 +44,32 @@ module.exports = function (grunt) {
                 }
             }
         },
+        less: {
+            development: {
+                options: {
+                    paths: ["assets/css"]
+                },
+                files: {
+                    "src/assets/watg-angular-richtext.css": "src/assets/watg-angular-richtext.less"
+                }
+            },
+            //production: {
+            //    options: {
+            //        paths: ["assets/css"],
+            //        plugins: [
+            //            new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+            //            new (require('less-plugin-clean-css'))(cleanCssOptions)
+            //        ],
+            //        modifyVars: {
+            //            imgPath: '"http://mycdn.com/path/to/images"',
+            //            bgColor: 'red'
+            //        }
+            //    },
+            //    files: {
+            //        "path/to/result.css": "path/to/source.less"
+            //    }
+            //}
+        },
         concat_css: {
             assets: {
                 src: ["src/assets/watg-angular-richtext.css"],
@@ -78,8 +104,8 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['src/app/**/*.js', 'src/assets/*.css'],
-            tasks: ['concat:app', 'concat:appdist', 'uglify', 'concat_css', 'cssmin:assets', 'cssmin:assetsdist']
+            files: ['src/app/**/*.js', 'src/assets/*.less'],
+            tasks: ['concat:app', 'concat:appdist', 'uglify', 'less', 'concat_css', 'cssmin:assets', 'cssmin:assetsdist']
         },
         copy: {
             main: {
@@ -125,6 +151,7 @@ module.exports = function (grunt) {
         }
     });
 
+
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -132,8 +159,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'concat_css', 'cssmin', 'watch', 'copy']);
+    grunt.registerTask('default', ['concat', 'uglify', 'less', 'concat_css', 'cssmin', 'watch', 'copy']);
     grunt.registerTask('dist', ['concat:appdist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', 'html2js']);
 
 

@@ -29,5 +29,9 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-html2js": "^0.3.3"
+  },
+  "dependencies": {
+    "grunt-contrib-less": "^1.0.1",
+    "less": "^2.5.1"
   }
 }
