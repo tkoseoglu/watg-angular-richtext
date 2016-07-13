@@ -1,0 +1,15 @@
+{
+    "html": {
+        "indent_char": " ",
+        "indent_size": 3,
+        "wrap_line_length": 25,
+        "unformatted": []
+    },
+    "js": {
+        "allowed_file_extensions": ["js", "json", "jshintrc", "jsbeautifyrc", "sublime-keymap"],
+        "indent_char": "\t",
+        "indent_size": 1,
+        "preserve_newlines": false,
+        "keep_array_indentation": true
+    }
+}

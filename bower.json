@@ -27,15 +27,10 @@
   ],
   "dependencies": {
     "angular": "*",
-    "angular-sanitize": "*",
-    "bootstrap": "*",
-    "fontawesome": "*",
-    "jquery": "*"
+    "angular-sanitize": "*"
   },
   "devDependencies": {
-    "angular": "*",
     "angular-route": "*",
-    "angular-sanitize": "*",
     "bootstrap": "*",
     "fontawesome": "*",
     "jquery": "*"

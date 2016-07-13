@@ -1,23 +1,54 @@
 /**
  * Created by Kemal on 07/31/15.
  */
-
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        concat: {
-            appdist: {
-                src: ['src/app/appdist.js',
-                    'src/app/directives/watgRichtextEditorDirective.js'],
-                dest: 'dist/js/watg-angular-richtext.js'
+        connect: {
+            dev: {
+                options: {
+                    port: 9023,
+                    livereload: true,
+                    debug: true,
+                    target: 'http://localhost:9023/index.html', // target url to open
+                    open: true
+                }
             },
+            test: {
+                options: {
+                    port: 9023,
+                    keepalive: false
+                }
+            }
+        },
+        jshint: {
+            beforeconcat: ["gruntfile.js", "app/**/*.js"]
+        },
+        concat: {
             app: {
                 src: ['src/app/app.js',
-                    'src/app/controllers/testController.js',
-                    'src/app/directives/watgRichtextEditorDirective.js'],
+                      'src/app/core/*.js',
+                      'src/app/directives/*.js',
+                      'src/app/tests/*.js'
+                ],
                 dest: 'dev/js/watg-angular-richtext.js'
             },
+            appdist: {
+                src: ['src/app/appdist.js', 'src/app/directives/watgRichtextEditorDirective.js'
+                ],
+                dest: 'dist/js/watg-angular-richtext.js'
+            },
             vendor: {
+                src: [
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/angular/angular.js',
+                    'bower_components/angular-sanitize/angular-sanitize.js',
+                    'bower_components/angular-route/angular-route.js'
+                ],
+                dest: 'dev/js/vendor.js'
+            },
+            vendorDist: {
                 src: [
                     'bower_components/jquery/dist/jquery.min.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
@@ -25,7 +56,7 @@ module.exports = function (grunt) {
                     'bower_components/angular-sanitize/angular-sanitize.min.js',
                     'bower_components/angular-route/angular-route.min.js'
                 ],
-                dest: 'dev/js/vendor.min.js'
+                dest: 'dev/js/watg-angular-richtext-vendor-dependencies.min.js'
             }
         },
         uglify: {
@@ -45,30 +76,14 @@ module.exports = function (grunt) {
             }
         },
         less: {
-            development: {
+            dev: {
                 options: {
                     paths: ["assets/css"]
                 },
                 files: {
                     "src/assets/watg-angular-richtext.css": "src/assets/watg-angular-richtext.less"
                 }
-            },
-            //production: {
-            //    options: {
-            //        paths: ["assets/css"],
-            //        plugins: [
-            //            new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
-            //            new (require('less-plugin-clean-css'))(cleanCssOptions)
-            //        ],
-            //        modifyVars: {
-            //            imgPath: '"http://mycdn.com/path/to/images"',
-            //            bgColor: 'red'
-            //        }
-            //    },
-            //    files: {
-            //        "path/to/result.css": "path/to/source.less"
-            //    }
-            //}
+            }
         },
         concat_css: {
             assets: {
@@ -96,7 +111,7 @@ module.exports = function (grunt) {
             },
             vendor: {
                 files: {
-                    'dev/css/vendor.min.css': [
+                    'dev/css/vendor.css': [
                         'bower_components/bootstrap/dist/css/bootstrap.css',
                         'bower_components/fontawesome/css/font-awesome.css'
                     ]
@@ -104,23 +119,31 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['src/app/**/*.js', 'src/assets/*.less'],
-            tasks: ['concat:app', 'concat:appdist', 'uglify', 'less', 'concat_css', 'cssmin:assets', 'cssmin:assetsdist']
+            files: ["src/app/app.js", "src/app/core/*.js", "src/app/**/*.js", "src/assets/*.less"],
+            tasks: ['concat:app', 'uglify', 'less', 'concat_css', 'cssmin']
         },
         copy: {
-            main: {
+            dev: {
+                files: [{
+                    expand: true,
+                    src: ['bower_components/fontawesome/fonts/*', 'bower_components/bootstrap/fonts/*'],
+                    dest: 'dev/fonts/',
+                    filter: 'isFile',
+                    flatten: true
+                }, {
+                    expand: true,
+                    src: ['bower_components/footable/css/fonts/*'],
+                    dest: 'dev/css/fonts/',
+                    filter: 'isFile',
+                    flatten: true
+                }]
+            },
+            dist: {
                 files: [
                     {
                         expand: true,
-                        src: ['bower_components/fontawesome/fonts/*', 'bower_components/bootstrap/fonts/*'],
-                        dest: 'dev/fonts/',
-                        filter: 'isFile',
-                        flatten: true
-                    },
-                    {
-                        expand: true,
-                        src: ['bower_components/footable/css/fonts/*'],
-                        dest: 'dev/css/fonts/',
+                        src: ["src/assets/images/*"],
+                        dest: 'dist/css/images/',
                         filter: 'isFile',
                         flatten: true
                     }
@@ -150,8 +173,7 @@ module.exports = function (grunt) {
             }
         }
     });
-
-
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -160,9 +182,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
-
-    grunt.registerTask('default', ['concat', 'uglify', 'less', 'concat_css', 'cssmin', 'watch', 'copy']);
-    grunt.registerTask('dist', ['concat:appdist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', 'html2js']);
-
-
+    grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.registerTask('dev', ["jshint", 'concat:app', 'uglify', 'less', 'concat_css', 'cssmin', 'copy', 'connect:dev', 'watch']);
+    grunt.registerTask('dist', ['concat:appdist', 'concat:vendorDist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', , 'copy:dist', 'html2js']);
 };
