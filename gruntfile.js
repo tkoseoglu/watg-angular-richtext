@@ -168,7 +168,7 @@ module.exports = function(grunt) {
                 }
             },
             main: {
-                src: ['src/app/templates/*.html'],
+                src: ['src/app/directives/templates/*.html'],
                 dest: 'dist/js/watg-angular-richtext.tpl.js'
             }
         }
