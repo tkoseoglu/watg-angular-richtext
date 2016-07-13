@@ -167,7 +167,7 @@ module.exports = function(grunt) {
                     removeStyleLinkTypeAttributes: true
                 }
             },
-            main: {
+            dist: {
                 src: ['src/app/directives/templates/*.html'],
                 dest: 'dist/js/watg-angular-richtext.tpl.js'
             }
@@ -184,5 +184,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.registerTask('dev', ["jshint", 'concat:app', 'uglify', 'less', 'concat_css', 'cssmin', 'copy', 'connect:dev', 'watch']);
-    grunt.registerTask('dist', ['concat:appdist', 'concat:vendorDist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', , 'copy:dist', 'html2js']);
+    grunt.registerTask('dist', ['concat:appdist', 'concat:vendorDist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', 'copy:dist', 'html2js:dist']);
 };

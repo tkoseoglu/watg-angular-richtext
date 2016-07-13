@@ -45,7 +45,7 @@
     function watgRichtext() {
         return {
             restrict: 'E',
-            templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
+            templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
             scope: {
                 id: "=",
                 richText: '=',
