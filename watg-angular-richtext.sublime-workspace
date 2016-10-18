@@ -9,7 +9,7 @@
 			],
 			[
 				"ng-mouse",
-				"ng-mouseover	AngularJS"
+				"ng-mouseover\tAngularJS"
 			],
 			[
 				"text",
@@ -93,7 +93,7 @@
 			],
 			[
 				"$route",
-				"$routeParams	AngularJS"
+				"$routeParams\tAngularJS"
 			],
 			[
 				"parent",
@@ -132,10 +132,26 @@
 	"buffers":
 	[
 		{
-			"file": "gruntfile.js",
+			"file": "src/app/directives/templates/watgRichtextEditorTemplate.html",
 			"settings":
 			{
-				"buffer_size": 6107,
+				"buffer_size": 8096,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/directives/watgRichtextEditorDirective.js",
+			"settings":
+			{
+				"buffer_size": 8826,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/app.js",
+			"settings":
+			{
+				"buffer_size": 175,
 				"line_ending": "Windows"
 			}
 		}
@@ -209,12 +225,27 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Tolga/Code/WATG/WATG Bower/watg-angular-richtext",
-		"/D/Tolga/Code/WATG/WATG Bower/watg-angular-richtext/src",
-		"/D/Tolga/Code/WATG/WATG Bower/watg-angular-richtext/src/app"
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/directives",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/directives/templates"
 	],
 	"file_history":
 	[
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/dist/js/watg-angular-richtext.tpl.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/gruntfile.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/index.html",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/app.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/appdist.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/core/app.config.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/directives/watgRichtextEditorDirective.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/tests/test.html",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/tests/testController.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/package.json",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/directives/templates//watgRichtextEditorTemplate.html",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/src/app/controllers/testController.js",
+		"/D/Tolga/Code/WATG/WATG GitHub/watg-angular-richtext/bower.json",
 		"/D/Tolga/Code/WATG/WATG Bower/watg-angular-richtext/gruntfile.js",
 		"/D/Tolga/Code/WATG/WATG Bower/watg-angular-autocomplete/src/app/directives/watgAutocompleteDirective.js",
 		"/D/Tolga/Code/WATG/WATG Bower/watg-angular-autocomplete/src/app/tests/testController.js",
@@ -329,20 +360,7 @@
 		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/autoCompleteProjectsDirective.js",
 		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/autoCompleteStaffDirective.js",
 		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/phoneNumberDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgAddressDisplayDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgLoadingAnimationDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgManageAddressDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgQuickAccountEditDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgQuickContactEditDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgTableColumnConfigDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgTablePagerDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgTableSearchDirective.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/views/projects.html",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/controllers/projectNumberRequestController.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/const.js",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/views/proposalEdit.html",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/views/listEdit.html",
-		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/views/projectEdit.html"
+		"/D/Tolga/Code/WATG/WATG X/WATG/WATG.Crm.Web2/app/directives/wgAddressDisplayDirective.js"
 	],
 	"find":
 	{
@@ -454,34 +472,93 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "gruntfile.js",
-					"semi_transient": true,
+					"file": "src/app/directives/templates/watgRichtextEditorTemplate.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6107,
+						"buffer_size": 8096,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3503,
-								3503
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"is_xml": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/app/directives/watgRichtextEditorDirective.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6107,
+								6152
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3600.0,
+						"translation.y": 2520.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/app/app.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -571,7 +648,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 1136.0,
+	"side_bar_width": 371.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

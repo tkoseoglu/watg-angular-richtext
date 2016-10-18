@@ -1,6 +1,8 @@
 <!--variables-->
-<div class="btn-group" ng-hide="config.variables === undefined || config.variables.length === 0 || config.showVariablesSelector===false">
-   <a class="btn btn-danger dropdown-toggle"
+<div class="btn-group"
+     ng-hide="config.variables === undefined || config.variables.length === 0 || config.showVariablesSelector===false">
+   <a class="btn btn-default btn-sm dropdown-toggle"
+      ng-class="{'{{config.Button.Style}}':true}"
       data-toggle="dropdown"
       ng-disabled="!menuEnabled"
       title="Variables">
@@ -15,7 +17,8 @@
 </div>
 <!--fontFamily-->
 <div class="btn-group" ng-hide="config.fontFamilies === undefined || config.fontFamilies.length === 0 || config.showFontSelector===false">
-   <a class="btn btn-primary dropdown-toggle"
+   <a class="btn btn-default btn-sm dropdown-toggle"
+      ng-class="{'{{config.Button.Style}}':true}"
       data-toggle="dropdown"
       title="Font Size" ng-disabled="!menuEnabled">
       <i class="fa fa-font"></i>&nbsp;
@@ -32,7 +35,8 @@
 </div>
 <!--fontSize-->
 <div class="btn-group" ng-hide="config.fontSizes === undefined || config.fontSizes.length === 0 || config.showFontSizeSelector===false">
-   <a class="btn btn-primary dropdown-toggle"
+   <a class="btn btn-default btn-sm dropdown-toggle"
+      ng-class="{'{{config.Button.Style}}':true}"
       data-toggle="dropdown"
       title="Font" ng-disabled="!menuEnabled">
       <i class="fa fa-text-height"></i>&nbsp;
@@ -48,7 +52,8 @@
 </div>
 <!--colors-->
 <div class="btn-group" ng-hide="config.colors === undefined || config.colors.length === 0 || config.showColorSelector===false">
-   <a class="btn btn-primary dropdown-toggle"
+   <a class="btn btn-default btn-sm dropdown-toggle"
+      ng-class="{'{{config.Button.Style}}':true}"
       data-toggle="dropdown"
       title="Font Color" ng-disabled="!menuEnabled">
       <i class="fa fa-paint-brush"></i>&nbsp;
@@ -68,26 +73,30 @@
 <div class="btn-group">
    <button ng-disabled="!menuEnabled"
       ng-show="config.showBold"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       title="Bold (Ctrl/Cmd+B)"
       ng-click="applyRichText('bold', null)">
       <i class="fa fa-bold"></i>
    </button>
    <button ng-disabled="!menuEnabled"
       type="button" ng-show="config.showItalic"
-      class="btn btn-primary"
+      class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       title="Italic (Ctrl/Cmd+I)"
       ng-click="applyRichText('italic', null)">
       <i class="fa fa-italic"></i>
    </button>
    <button ng-disabled="!menuEnabled"
       type="button" ng-show="config.showStrikeThrough"
-      class="btn btn-primary"
+      class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       title="Strikethrough" ng-click="applyRichText('strikethrough', null)">
       <i class="fa fa-strikethrough"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showUnderline"
       title="Underline (Ctrl/Cmd+U)"
       ng-click="applyRichText('underline', null)">
@@ -96,26 +105,30 @@
 </div>
 <div class="btn-group">
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showUnorderedList"
       title="Bullet list" ng-click="applyRichText('insertunorderedlist', null)">
       <i class="fa fa-list-ul"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showOrderedList"
       title="Number list" ng-click="applyRichText('insertorderedlist', null)">
       <i class="fa fa-list-ol"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showReduceIndent"
       title="Reduce indent (Shift+Tab)"
       ng-click="applyRichText('outdent', null)">
       <i class="fa fa-dedent"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showIndent"
       title="Indent (Tab)" ng-click="applyRichText('indent', null)">
       <i class="fa fa-indent"></i>
@@ -123,25 +136,29 @@
 </div>
 <div class="btn-group">
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showLeftAlgin"
       title="Align Left" ng-click="applyRichText('justifyleft', null)">
       <i class="fa fa-align-left"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showCenterAlign"
       title="Center" ng-click="applyRichText('justifycenter', null)">
       <i class="fa fa-align-center"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showRightAlign"
       title="Align Right" ng-click="applyRichText('justifyright', null)">
       <i class="fa fa-align-right"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showJustify"
       title="Justify" ng-click="applyRichText('justifyfull', null)">
       <i class="fa fa-align-justify"></i>
@@ -149,13 +166,15 @@
 </div>
 <div class="btn-group">
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showUndo"
       title="Undo" ng-click="applyRichText('undo', null)">
       <i class="fa fa-undo"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showRedo"
       title="Redo" ng-click="applyRichText('redo', null)">
       <i class="fa fa-repeat"></i>
@@ -163,14 +182,17 @@
 </div>
 <div class="btn-group">
    <button ng-disabled="!menuEnabled"
-      type="button" class="btn btn-primary"
+      type="button"
+      class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       title="Insert hyperlink"
       ng-show="config.showInsertLink"
       data-toggle="modal" data-target="#{{hyperlinkModalId}}">
       <i class=" fa fa-link"></i>
    </button>
    <button ng-disabled="!menuEnabled"
-      class="btn btn-primary"
+      class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       title="Remove Hyperlink"
       ng-show="config.showRemoveLink"
       ng-click="applyRichText('unlink', null)">
@@ -179,7 +201,8 @@
 </div>
 <div class="btn-group">
    <button ng-click="showSourceEditor = !showSourceEditor"
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-default btn-sm"
+      ng-class="{'{{config.Button.Style}}':true}"
       ng-show="config.showSourceCode"
       title="Edit source">
       <i class="fa fa-code"></i>

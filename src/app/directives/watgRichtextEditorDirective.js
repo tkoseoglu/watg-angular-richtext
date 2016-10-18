@@ -8,7 +8,8 @@
     function watgRichtext() {
         return {
             restrict: 'E',
-            templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
+            templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
+            //templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
             scope: {
                 id: "=",
                 richText: '=',

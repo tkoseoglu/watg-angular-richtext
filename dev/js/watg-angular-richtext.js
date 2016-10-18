@@ -45,7 +45,8 @@
     function watgRichtext() {
         return {
             restrict: 'E',
-            templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
+            templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
+            //templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
             scope: {
                 id: "=",
                 richText: '=',
@@ -334,27 +335,37 @@
                     colorValue: '00ffff'
             }
             ],
+            variables:[{
+                Name:"One"
+            },{
+                Name:"Two"
+            },{
+                Name:"Three"
+            }],
             showVariablesSelector: true,
-            showFontSelector: false,
-            showFontSizeSelector: false,
-            showColorSelector: false,
-            showBold: false,
-            showItalic: false,
-            showStrikeThrough: false,
-            showUnderline: false,
-            showUnorderedList: false,
-            showOrderedList: false,
-            showReduceIndent: false,
-            showIndent: false,
-            showLeftAlign: false,
-            showCenterAlign: false,
-            showRightAlign: false,
-            showJustify: false,
-            showUndo: false,
-            showRedo: false,
+            showFontSelector: true,
+            showFontSizeSelector: true,
+            showColorSelector: true,
+            showBold: true,
+            showItalic: true,
+            showStrikeThrough: true,
+            showUnderline: true,
+            showUnorderedList: true,
+            showOrderedList: true,
+            showReduceIndent: true,
+            showIndent: true,
+            showLeftAlign: true,
+            showCenterAlign: true,
+            showRightAlign: true,
+            showJustify: true,
+            showUndo: true,
+            showRedo: true,
             showInsertLink: true,
             showRemoveLink: true,
-            showSourceCode: false
+            showSourceCode: true,
+            Button: {
+                Style: "btn-info"
+            }
         };
     }
 })();
