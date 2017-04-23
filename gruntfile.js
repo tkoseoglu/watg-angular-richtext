@@ -53,7 +53,7 @@ module.exports = function(grunt) {
                 dest: 'dev/js/watg-angular-richtext.js'
             },
             appdist: {
-                src: ['src/app/appdist.js', 'src/app/directives/watgRichtextEditorDirective.js'],
+                src: ['src/app/appdist.js', 'src/app/core/app.const.js', 'src/app/directives/watgRichtextEditorDirective.js'],
                 dest: 'dist/js/watg-angular-richtext.js'
             },
             vendor: {
@@ -169,7 +169,7 @@ module.exports = function(grunt) {
         html2js: {
             options: {
                 base: 'src',
-                module: 'watgRichtext.templates',
+                module: 'watgRichtextModule.templates',
                 singleModule: true,
                 useStrict: true,
                 htmlmin: {

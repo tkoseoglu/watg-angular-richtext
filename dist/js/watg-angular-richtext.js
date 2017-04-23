@@ -8,6 +8,11 @@
     var watgRichtextModule = angular.module('watgRichtextModule', modules);
 
 })();
+angular.module('watgRichtextModule.const', [])
+
+.constant('CONST_TEMPLATE_URL', 'app/directives/templates/watgRichtextEditorTemplate.html')
+
+;
 /**
  * Created by Kemal on 07/31/15.
  */
