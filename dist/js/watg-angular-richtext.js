@@ -37,7 +37,6 @@
                 scope.hyperlinkModalId = "hyperlinkeModal" + scope.id;
                 scope.showSourceEditor = false;
                 scope.menuEnabled = false;
-
                 scope.richTextSource = "";
                 scope.output = scope.input;
 

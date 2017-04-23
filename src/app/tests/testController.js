@@ -21,6 +21,7 @@
             console.log('do something');
             $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
         };
+
         //all optional
         $scope.watgRichTextConfig = {
             height: 200, //default 300
