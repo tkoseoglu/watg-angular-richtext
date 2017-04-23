@@ -30,7 +30,8 @@
     "grunt-contrib-jshint": "^0.12.0",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-html2js": "^0.3.3"
+    "grunt-html2js": "^0.3.3",
+    "grunt-ng-constant": "^2.0.1"
   },
   "dependencies": {
     "grunt-contrib-less": "^1.0.1",

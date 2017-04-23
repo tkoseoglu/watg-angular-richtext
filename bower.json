@@ -1,38 +1,38 @@
 {
-  "name": "watg-angular-richtext",
-  "version": "0.0.1",
-  "homepage": "https://github.com/tkoseoglu/watg-angular-richtext",
-  "author": {
-    "name": "Tolga Koseoglu",
-    "email": "tkoseoglu@live.com",
-    "url": "https://github.com/tkoseoglu"
-  },
-  "description": "WATG richtext editor for angularjs web applications",
-  "keywords": [
-    "richtext",
-    "WSIWYG"
-  ],
-  "main": [
-    "dist/js/watg-angular-richtext.js",
-    "dist/js/watg-angular-richtext.tpl.js"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests",
-    "src",
-    "dev"
-  ],
-  "dependencies": {
-    "angular": "*",
-    "angular-sanitize": "*"
-  },
-  "devDependencies": {
-    "angular-route": "*",
-    "bootstrap": "*",
-    "fontawesome": "*",
-    "jquery": "*"
-  }
+    "name": "watg-angular-richtext",
+    "version": "0.0.1",
+    "homepage": "https://github.com/tkoseoglu/watg-angular-richtext",
+    "author": {
+        "name": "Tolga Koseoglu",
+        "email": "tolga.k@outlook.com",
+        "url": "https://github.com/tkoseoglu"
+    },
+    "description": "WATG richtext editor for angularjs web applications",
+    "keywords": [
+        "richtext",
+        "WSIWYG"
+    ],
+    "main": [
+        "dist/js/watg-angular-richtext.js",
+        "dist/js/watg-angular-richtext.tpl.js"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "src",
+        "dev"
+    ],
+    "dependencies": {
+        "angular": "*",
+        "angular-sanitize": "*"
+    },
+    "devDependencies": {
+        "angular-route": "*",
+        "bootstrap": "*",
+        "fontawesome": "*",
+        "jquery": "*"
+    }
 }

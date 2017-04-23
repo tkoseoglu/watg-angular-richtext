@@ -2,7 +2,9 @@
  * Created by Kemal on 07/31/15.
  */
 (function() {
-	var watgRichtext = angular.module('watgRichtext', [
-		'watgRichtext.templates'
-	]);
+    "use strict";
+
+    var modules = ['watgRichtextModule.templates'];
+    var watgRichtextModule = angular.module('watgRichtextModule', modules);
+
 })();

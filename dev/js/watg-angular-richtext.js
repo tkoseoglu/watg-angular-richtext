@@ -2,51 +2,58 @@
  * Created by Kemal on 07/31/15.
  */
 (function() {
-	var watgRichtext = angular.module('watgRichtext', [
-		'ngRoute',
-		'ngSanitize',
-		'watgRichtext.templates'
-	]);
+    "use strict";
+    angular.module('watgRichtextModule', [
+        'ngRoute',
+        'ngSanitize',
+        //'watgRichtextModule.templates',
+        'watgRichtextModule.const'
+    ]);
 })();
-
 (function() {
-	var app = angular.module('watgRichtext');
-	app.config(appConfig);
-	app.run(appRun);
+    "use strict";
+    var app = angular.module('watgRichtextModule');
+    app.config(['$routeProvider', '$httpProvider', appConfig]);
+    app.run(appRun);
 
-	function appConfig($httpProvider, $routeProvider) {
-		//this is for CORS operations
-		$httpProvider.defaults.useXDomain = true;
-		delete $httpProvider.defaults.headers.common['X-Requested-With'];
-		if (!$httpProvider.defaults.headers.get) {
-			$httpProvider.defaults.headers.get = {};
-		}
-		//disable IE ajax request caching
-		$httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
-		//routes
-		$routeProvider.when('/test', {
-			templateUrl: 'src/app/tests/test.html',
-			controller: 'testController'
-		}).otherwise({
-			redirectTo: '/test'
-		});
-	}
+    function appConfig($routeProvider, $httpProvider) {
 
-	function appRun() {}
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        if (!$httpProvider.defaults.headers.get) {
+            $httpProvider.defaults.headers.get = {};
+        }
+
+        $httpProvider.defaults.headers.common['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+        $httpProvider.defaults.headers.common['Cache-Control'] = 'no-cache';
+        $httpProvider.defaults.headers.common['Pragma'] = 'no-cache';
+
+        $routeProvider.when('/test', {
+            templateUrl: 'src/app/tests/test.html',
+            controller: 'testController'
+        }).otherwise({
+            redirectTo: '/test'
+        });
+    }
+
+    function appRun() {}
 })();
+angular.module('watgRichtextModule.const', [])
 
+.constant('CONST_TEMPLATE_URL', 'src/app/directives/templates/watgRichtextEditorTemplate.html')
+
+;
 /**
  * Created by Kemal on 07/31/15.
  */
 (function() {
     "use strict";
-    angular.module("watgRichtext").directive("watgRichtextEditor", watgRichtext);
+    angular.module("watgRichtextModule").directive("watgRichtextEditor", ['CONST_TEMPLATE_URL', watgRichtext]);
 
-    function watgRichtext() {
+    function watgRichtext(CONST_TEMPLATE_URL) {
         return {
             restrict: 'E',
-            //templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
-            templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
+            templateUrl: CONST_TEMPLATE_URL,
             scope: {
                 id: "=",
                 input: "=",
@@ -65,7 +72,6 @@
                 scope.hyperlinkModalId = "hyperlinkeModal" + scope.id;
                 scope.showSourceEditor = false;
                 scope.menuEnabled = false;
-
                 scope.richTextSource = "";
                 scope.output = scope.input;
 
@@ -214,7 +220,6 @@
                         if ('spellcheck' in editorBody) editorBody.spellcheck = true;
                         if ('contentEditable' in editorBody) editorBody.contentEditable = true;
                         else if ('designMode' in editorDoc) {
-                            // turn on designMode
                             editorDoc.designMode = "on";
                         }
                         if (scope.input) editorDoc.body.innerHTML = scope.input;
@@ -250,7 +255,7 @@
  */
 (function() {
     "use strict";
-    angular.module("watgRichtext").controller('testController', ['$scope', testController]);
+    angular.module("watgRichtextModule").controller('testController', ['$scope', testController]);
 
     function testController($scope) {
         $scope.header = 'Richtext';
@@ -268,7 +273,6 @@
             console.log('do something');
             $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
         };
-        //all optional
         $scope.watgRichTextConfig = {
             height: 200, //default 300
             multiLine: true, //default true

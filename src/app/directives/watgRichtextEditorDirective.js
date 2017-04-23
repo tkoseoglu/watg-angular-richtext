@@ -3,13 +3,12 @@
  */
 (function() {
     "use strict";
-    angular.module("watgRichtext").directive("watgRichtextEditor", watgRichtext);
+    angular.module("watgRichtextModule").directive("watgRichtextEditor", ['CONST_TEMPLATE_URL', watgRichtext]);
 
-    function watgRichtext() {
+    function watgRichtext(CONST_TEMPLATE_URL) {
         return {
             restrict: 'E',
-            templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
-            //templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
+            templateUrl: CONST_TEMPLATE_URL,
             scope: {
                 id: "=",
                 input: "=",

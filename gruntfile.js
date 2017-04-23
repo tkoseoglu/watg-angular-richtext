@@ -4,6 +4,25 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        ngconstant: {
+            // Options for all targets
+            options: {
+                space: " ",
+                dest: "src/app/core/app.const.js",
+                name: "watgRichtextModule.const"
+            },
+            // Environment targets
+            dev: {
+                constants: {
+                    "CONST_TEMPLATE_URL": "src/app/directives/templates/watgRichtextEditorTemplate.html"
+                }
+            },
+            dist: {
+                constants: {
+                    "CONST_TEMPLATE_URL": "app/directives/templates/watgRichtextEditorTemplate.html"
+                }
+            }
+        },
         connect: {
             dev: {
                 options: {
@@ -27,15 +46,14 @@ module.exports = function(grunt) {
         concat: {
             app: {
                 src: ['src/app/app.js',
-                      'src/app/core/*.js',
-                      'src/app/directives/*.js',
-                      'src/app/tests/*.js'
+                    'src/app/core/*.js',
+                    'src/app/directives/*.js',
+                    'src/app/tests/*.js'
                 ],
                 dest: 'dev/js/watg-angular-richtext.js'
             },
             appdist: {
-                src: ['src/app/appdist.js', 'src/app/directives/watgRichtextEditorDirective.js'
-                ],
+                src: ['src/app/appdist.js', 'src/app/directives/watgRichtextEditorDirective.js'],
                 dest: 'dist/js/watg-angular-richtext.js'
             },
             vendor: {
@@ -139,15 +157,13 @@ module.exports = function(grunt) {
                 }]
             },
             dist: {
-                files: [
-                    {
-                        expand: true,
-                        src: ["src/assets/images/*"],
-                        dest: 'dist/css/images/',
-                        filter: 'isFile',
-                        flatten: true
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    src: ["src/assets/images/*"],
+                    dest: 'dist/css/images/',
+                    filter: 'isFile',
+                    flatten: true
+                }]
             }
         },
         html2js: {
@@ -173,6 +189,7 @@ module.exports = function(grunt) {
             }
         }
     });
+    grunt.loadNpmTasks('grunt-ng-constant');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-html2js');
@@ -183,6 +200,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.registerTask('dev', ["jshint", 'concat:app', 'uglify', 'less', 'concat_css', 'cssmin', 'copy', 'connect:dev', 'watch']);
-    grunt.registerTask('dist', ['concat:appdist', 'concat:vendorDist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', 'copy:dist', 'html2js:dist']);
+    grunt.registerTask('dev', ['ngconstant:dev', "jshint", 'concat:app', 'uglify', 'less', 'concat_css', 'cssmin', 'copy', 'connect:dev', 'watch']);
+    grunt.registerTask('dist', ['ngconstant:dist', 'concat:appdist', 'concat:vendorDist', 'uglify:appdist', 'concat_css:assetsdist', 'cssmin:assetsdist', 'copy:dist', 'html2js:dist']);
 };

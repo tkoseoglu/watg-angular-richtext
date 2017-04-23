@@ -3,7 +3,7 @@
  */
 (function() {
     "use strict";
-    angular.module("watgRichtext").controller('testController', ['$scope', testController]);
+    angular.module("watgRichtextModule").controller('testController', ['$scope', testController]);
 
     function testController($scope) {
         $scope.header = 'Richtext';
@@ -21,8 +21,6 @@
             console.log('do something');
             $scope.resetCount.push(parseInt($scope.resetCount.length + 1));
         };
-
-        //all optional
         $scope.watgRichTextConfig = {
             height: 200, //default 300
             multiLine: true, //default true
