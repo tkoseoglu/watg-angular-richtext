@@ -8,8 +8,12 @@
     function testController($scope) {
         $scope.header = 'Richtext';
         $scope.item = {
-            Content: 'Bla Bla Bla <b>Tolga</b>',
-            Content2: 'Da da da <b>Charli</b>'
+            Input: "<b>test</b>",
+            Output: ""
+        };
+        $scope.item2 = {
+            Input: "",
+            Output: ""
         };
         $scope.resetCount = [];
         $scope.resetCount2 = [];
@@ -45,61 +49,60 @@
                 fontName: 'Palatino Linotype'
             }],
             colors: [{
-                    colorName: 'Black',
-                    colorValue: '000000'
+                colorName: 'Black',
+                colorValue: '000000'
             }, {
-                    colorName: 'Silver',
-                    colorValue: 'C0C0C0'
+                colorName: 'Silver',
+                colorValue: 'C0C0C0'
             }, {
-                    colorName: 'Gray',
-                    colorValue: '808080'
+                colorName: 'Gray',
+                colorValue: '808080'
             }, {
-                    colorName: 'White',
-                    colorValue: 'FFFFFF'
+                colorName: 'White',
+                colorValue: 'FFFFFF'
             }, {
-                    colorName: 'Maroon',
-                    colorValue: '800000'
+                colorName: 'Maroon',
+                colorValue: '800000'
             }, {
-                    colorName: 'Red',
-                    colorValue: 'FF0000'
+                colorName: 'Red',
+                colorValue: 'FF0000'
             }, {
-                    colorName: 'Purple',
-                    colorValue: '800080'
+                colorName: 'Purple',
+                colorValue: '800080'
             }, {
-                    colorName: 'Fuchsia',
-                    colorValue: 'FF00FF'
+                colorName: 'Fuchsia',
+                colorValue: 'FF00FF'
             }, {
-                    colorName: 'Green',
-                    colorValue: '008000'
+                colorName: 'Green',
+                colorValue: '008000'
             }, {
-                    colorName: 'Lime',
-                    colorValue: '00ff00'
+                colorName: 'Lime',
+                colorValue: '00ff00'
             }, {
-                    colorName: 'Olive',
-                    colorValue: '808000'
+                colorName: 'Olive',
+                colorValue: '808000'
             }, {
-                    colorName: 'Yellow',
-                    colorValue: 'ffff00'
+                colorName: 'Yellow',
+                colorValue: 'ffff00'
             }, {
-                    colorName: 'Navy',
-                    colorValue: '000080'
+                colorName: 'Navy',
+                colorValue: '000080'
             }, {
-                    colorName: 'Blue',
-                    colorValue: '0000FF'
+                colorName: 'Blue',
+                colorValue: '0000FF'
             }, {
-                    colorName: 'Teal',
-                    colorValue: '008080'
+                colorName: 'Teal',
+                colorValue: '008080'
             }, {
-                    colorName: 'Aqua',
-                    colorValue: '00ffff'
-            }
-            ],
-            variables:[{
-                Name:"One"
-            },{
-                Name:"Two"
-            },{
-                Name:"Three"
+                colorName: 'Aqua',
+                colorValue: '00ffff'
+            }],
+            variables: [{
+                Name: "One"
+            }, {
+                Name: "Two"
+            }, {
+                Name: "Three"
             }],
             showVariablesSelector: true,
             showFontSelector: true,

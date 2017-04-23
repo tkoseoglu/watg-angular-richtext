@@ -45,11 +45,12 @@
     function watgRichtext() {
         return {
             restrict: 'E',
-            templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
-            //templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
+            //templateUrl: 'src/app/directives/templates/watgRichtextEditorTemplate.html',
+            templateUrl: 'app/directives/templates/watgRichtextEditorTemplate.html',
             scope: {
                 id: "=",
-                richText: '=',
+                input: "=",
+                output: '=',
                 config: '=',
                 resetCount: "="
             },
@@ -62,22 +63,47 @@
                 var defaultHeight = 300;
                 var singleLineMaxLength = 150;
                 scope.hyperlinkModalId = "hyperlinkeModal" + scope.id;
-                scope.menuEnabled = false;
                 scope.showSourceEditor = false;
-                scope.richTextSource = scope.richText;
-                scope.$watch('richText', function() {
-                    if (scope.richText && watchCounter === 0) {
-                        editorDoc.body.innerHTML = scope.richText;
-                        scope.richTextSource = scope.richText;
-                        watchCounter++;
-                    }
-                    if (scope.richText) scope.menuEnabled = true;
-                    else scope.menuEnabled = false;
+                scope.menuEnabled = false;
+
+                scope.richTextSource = "";
+                scope.output = scope.input;
+
+                // scope.$watch('input', function() {
+                //     if (scope.input && watchCounter === 0) {
+                //         editorDoc.body.innerHTML = scope.input;
+                //         scope.richTextSource = scope.input;
+                //     }
+                //     if (scope.input) scope.menuEnabled = true;
+                //     else scope.menuEnabled = false;
+                // });
+
+                // scope.$watch('richTextSource', function() {
+                //     scope.output = scope.richTextSource;
+                //     editorDoc.body.innerHTML = scope.richTextSource;
+                // });
+
+                scope.$watch('output', function() {
+                    if (scope.output) {
+                        scope.menuEnabled = true;
+                    } else scope.menuEnabled = false;
                 });
-                scope.$watch('richTextSource', function() {
-                    scope.richText = scope.richTextSource;
-                    editorDoc.body.innerHTML = scope.richTextSource;
-                });
+                scope.update = function() {
+                    try {
+                        scope.output = editorDoc.body.innerHTML;
+                        scope.$apply();
+                    } catch (e) {}
+                };
+                scope.applyRichText = function(action, details) {
+                    try {
+                        if (action === "createLink") {
+                            if (details.indexOf("http://") === -1 && details.indexOf("https://") === -1) details = "http://" + details;
+                        }
+                        editorDoc.execCommand(action, false, details);
+                        scope.update();
+                    } catch (e) {}
+                };
+
                 scope.$watch('config.variables', function() {});
                 scope.$watch('config.fontFamilies', function() {});
                 scope.$watch('config.fontSizes', function() {});
@@ -85,90 +111,87 @@
                 scope.$watchCollection('resetCount', function(newValue, oldValue) {
                     if (newValue !== undefined) {
                         if (newValue.length > 0) {
-                            scope.richText = '';
-                            if (editorDoc) editorDoc.body.innerHTML = scope.richText;
+                            scope.output = '';
+                            if (editorDoc) editorDoc.body.innerHTML = scope.output;
                         }
                     }
                 });
                 if (scope.config.fontFamilies === undefined) {
                     scope.config.fontFamilies = [{
-                            fontName: 'Arial'
-                }, {
-                            fontName: 'Calibri'
-                }, {
-                            fontName: 'Time New Roman'
-                }, {
-                            fontName: 'Palatino Linotype'
+                        fontName: 'Arial'
+                    }, {
+                        fontName: 'Calibri'
+                    }, {
+                        fontName: 'Time New Roman'
+                    }, {
+                        fontName: 'Palatino Linotype'
+                    }];
                 }
-                ];
-                }
-                if (scope.config.fontSizes == undefined) {
+                if (scope.config.fontSizes === undefined) {
                     scope.config.fontSizes = [{
-                            fontSizeName: 'Huge',
-                            fontSize: 7
-                }, {
-                            fontSizeName: 'Big',
-                            fontSize: 5
-                }, {
-                            fontSizeName: 'Normal',
-                            fontSize: 3
-                }, {
-                            fontSizeName: 'Small',
-                            fontSize: 1
+                        fontSizeName: 'Huge',
+                        fontSize: 7
+                    }, {
+                        fontSizeName: 'Big',
+                        fontSize: 5
+                    }, {
+                        fontSizeName: 'Normal',
+                        fontSize: 3
+                    }, {
+                        fontSizeName: 'Small',
+                        fontSize: 1
+                    }];
                 }
-                ];
-                }
-                if (scope.config.colors == undefined) {
+                if (scope.config.colors === undefined) {
                     scope.config.colors = [{
-                            colorName: 'Black',
-                            colorValue: '000000'
-                }, {
-                            colorName: 'Silver',
-                            colorValue: 'C0C0C0'
-                }, {
-                            colorName: 'Gray',
-                            colorValue: '808080'
-                }, {
-                            colorName: 'White',
-                            colorValue: 'FFFFFF'
-                }, {
-                            colorName: 'Maroon',
-                            colorValue: '800000'
-                }, {
-                            colorName: 'Red',
-                            colorValue: 'FF0000'
-                }, {
-                            colorName: 'Purple',
-                            colorValue: '800080'
-                }, {
-                            colorName: 'Fuchsia',
-                            colorValue: 'FF00FF'
-                }, {
-                            colorName: 'Green',
-                            colorValue: '008000'
-                }, {
-                            colorName: 'Lime',
-                            colorValue: '00ff00'
-                }, {
-                            colorName: 'Olive',
-                            colorValue: '808000'
-                }, {
-                            colorName: 'Yellow',
-                            colorValue: 'ffff00'
-                }, {
-                            colorName: 'Navy',
-                            colorValue: '000080'
-                }, {
-                            colorName: 'Blue',
-                            colorValue: '0000FF'
-                }, {
-                            colorName: 'Teal',
-                            colorValue: '008080'
-                }, {
-                            colorName: 'Aqua',
-                            colorValue: '00ffff'
-                }
-                ];
+                        colorName: 'Black',
+                        colorValue: '000000'
+                    }, {
+                        colorName: 'Silver',
+                        colorValue: 'C0C0C0'
+                    }, {
+                        colorName: 'Gray',
+                        colorValue: '808080'
+                    }, {
+                        colorName: 'White',
+                        colorValue: 'FFFFFF'
+                    }, {
+                        colorName: 'Maroon',
+                        colorValue: '800000'
+                    }, {
+                        colorName: 'Red',
+                        colorValue: 'FF0000'
+                    }, {
+                        colorName: 'Purple',
+                        colorValue: '800080'
+                    }, {
+                        colorName: 'Fuchsia',
+                        colorValue: 'FF00FF'
+                    }, {
+                        colorName: 'Green',
+                        colorValue: '008000'
+                    }, {
+                        colorName: 'Lime',
+                        colorValue: '00ff00'
+                    }, {
+                        colorName: 'Olive',
+                        colorValue: '808000'
+                    }, {
+                        colorName: 'Yellow',
+                        colorValue: 'ffff00'
+                    }, {
+                        colorName: 'Navy',
+                        colorValue: '000080'
+                    }, {
+                        colorName: 'Blue',
+                        colorValue: '0000FF'
+                    }, {
+                        colorName: 'Teal',
+                        colorValue: '008080'
+                    }, {
+                        colorName: 'Aqua',
+                        colorValue: '00ffff'
+                    }];
                 }
                 //initialize
                 scope.initialize = function() {
@@ -177,7 +200,7 @@
                         if (editor.contentDocument) editorDoc = editor.contentDocument;
                         else editorDoc = editor.contentWindow.document;
                         editorHead = editorDoc.head;
-                        if (editorHead != null && scope.config.bootstrapCssPath) {
+                        if (editorHead !== null && scope.config.bootstrapCssPath) {
                             editorHead.innerHTML = "<link href='" + scope.config.bootstrapCssPath + "' rel='stylesheet'/>";
                         }
                         editorBody = editorDoc.body;
@@ -194,7 +217,7 @@
                             // turn on designMode
                             editorDoc.designMode = "on";
                         }
-                        if (scope.richText) editorDoc.body.innerHTML = scope.richText;
+                        if (scope.input) editorDoc.body.innerHTML = scope.input;
                         //iFrame events
                         $(editor.contentWindow.document).keydown(function(e) {
                             if (scope.config.multiLine === false) {
@@ -202,7 +225,7 @@
                                 if (e.keyCode === 13) {
                                     e.preventDefault();
                                 }
-                                if (scope.richText.length > singleLineMaxLength && e.keyCode !== 8 && e.keyCode !== 35 && e.keyCode !== 36 && e.keyCode !== 46) {
+                                if (scope.output.length > singleLineMaxLength && e.keyCode !== 8 && e.keyCode !== 35 && e.keyCode !== 36 && e.keyCode !== 46) {
                                     e.preventDefault();
                                 }
                             }
@@ -217,28 +240,11 @@
                         console.error("Rich-text editor not found");
                     }
                 };
-                scope.update = function() {
-                    try {
-                        scope.richText = editorDoc.body.innerHTML;
-                        scope.$apply();
-                    } catch (e) {}
-                };
-                scope.applyRichText = function(action, details) {
-                    try {
-                        if (action === "createLink") {
-                            if (details.indexOf("http://") === -1 && details.indexOf("https://") === -1) details = "http://" + details;
-
-                        }
-                        editorDoc.execCommand(action, false, details);
-                        scope.update();
-                    } catch (e) {}
-                };
                 scope.initialize();
             }
         };
     }
 })();
-
 /**
  * Created by Kemal on 07/31/15.
  */
@@ -249,8 +255,12 @@
     function testController($scope) {
         $scope.header = 'Richtext';
         $scope.item = {
-            Content: 'Bla Bla Bla <b>Tolga</b>',
-            Content2: 'Da da da <b>Charli</b>'
+            Input: "<b>test</b>",
+            Output: ""
+        };
+        $scope.item2 = {
+            Input: "",
+            Output: ""
         };
         $scope.resetCount = [];
         $scope.resetCount2 = [];
@@ -286,61 +296,60 @@
                 fontName: 'Palatino Linotype'
             }],
             colors: [{
-                    colorName: 'Black',
-                    colorValue: '000000'
+                colorName: 'Black',
+                colorValue: '000000'
             }, {
-                    colorName: 'Silver',
-                    colorValue: 'C0C0C0'
+                colorName: 'Silver',
+                colorValue: 'C0C0C0'
             }, {
-                    colorName: 'Gray',
-                    colorValue: '808080'
+                colorName: 'Gray',
+                colorValue: '808080'
             }, {
-                    colorName: 'White',
-                    colorValue: 'FFFFFF'
+                colorName: 'White',
+                colorValue: 'FFFFFF'
             }, {
-                    colorName: 'Maroon',
-                    colorValue: '800000'
+                colorName: 'Maroon',
+                colorValue: '800000'
             }, {
-                    colorName: 'Red',
-                    colorValue: 'FF0000'
+                colorName: 'Red',
+                colorValue: 'FF0000'
             }, {
-                    colorName: 'Purple',
-                    colorValue: '800080'
+                colorName: 'Purple',
+                colorValue: '800080'
             }, {
-                    colorName: 'Fuchsia',
-                    colorValue: 'FF00FF'
+                colorName: 'Fuchsia',
+                colorValue: 'FF00FF'
             }, {
-                    colorName: 'Green',
-                    colorValue: '008000'
+                colorName: 'Green',
+                colorValue: '008000'
             }, {
-                    colorName: 'Lime',
-                    colorValue: '00ff00'
+                colorName: 'Lime',
+                colorValue: '00ff00'
             }, {
-                    colorName: 'Olive',
-                    colorValue: '808000'
+                colorName: 'Olive',
+                colorValue: '808000'
             }, {
-                    colorName: 'Yellow',
-                    colorValue: 'ffff00'
+                colorName: 'Yellow',
+                colorValue: 'ffff00'
             }, {
-                    colorName: 'Navy',
-                    colorValue: '000080'
+                colorName: 'Navy',
+                colorValue: '000080'
             }, {
-                    colorName: 'Blue',
-                    colorValue: '0000FF'
+                colorName: 'Blue',
+                colorValue: '0000FF'
             }, {
-                    colorName: 'Teal',
-                    colorValue: '008080'
+                colorName: 'Teal',
+                colorValue: '008080'
             }, {
-                    colorName: 'Aqua',
-                    colorValue: '00ffff'
-            }
-            ],
-            variables:[{
-                Name:"One"
-            },{
-                Name:"Two"
-            },{
-                Name:"Three"
+                colorName: 'Aqua',
+                colorValue: '00ffff'
+            }],
+            variables: [{
+                Name: "One"
+            }, {
+                Name: "Two"
+            }, {
+                Name: "Three"
             }],
             showVariablesSelector: true,
             showFontSelector: true,
