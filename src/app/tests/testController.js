@@ -23,8 +23,7 @@
         };
         $scope.watgRichTextConfig = {
             height: 200, //default 300
-            multiLine: true, //default true
-            bootstrapCssPath: '../bower_components/bootstrap/dist/css/bootstrap.min.css',
+            multiLine: true, //default true           
             fontSizes: [{
                 fontSizeName: 'Huge',
                 fontSize: 7
@@ -125,7 +124,7 @@
             showRemoveLink: true,
             showSourceCode: true,
             Button: {
-                Style: "btn-info"
+                Style: "btn-primary btn-sm"
             }
         };
     }

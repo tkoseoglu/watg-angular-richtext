@@ -69,25 +69,12 @@ angular.module('watgRichtextModule.const', [])
                 var watchCounter = 0;
                 var defaultHeight = 300;
                 var singleLineMaxLength = 150;
+                var bootstappCssUrl = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
                 scope.hyperlinkModalId = "hyperlinkeModal" + scope.id;
                 scope.showSourceEditor = false;
                 scope.menuEnabled = false;
                 scope.richTextSource = "";
                 scope.output = scope.input;
-
-                // scope.$watch('input', function() {
-                //     if (scope.input && watchCounter === 0) {
-                //         editorDoc.body.innerHTML = scope.input;
-                //         scope.richTextSource = scope.input;
-                //     }
-                //     if (scope.input) scope.menuEnabled = true;
-                //     else scope.menuEnabled = false;
-                // });
-
-                // scope.$watch('richTextSource', function() {
-                //     scope.output = scope.richTextSource;
-                //     editorDoc.body.innerHTML = scope.richTextSource;
-                // });
 
                 scope.$watch('output', function() {
                     if (scope.output) {
@@ -206,8 +193,8 @@ angular.module('watgRichtextModule.const', [])
                         if (editor.contentDocument) editorDoc = editor.contentDocument;
                         else editorDoc = editor.contentWindow.document;
                         editorHead = editorDoc.head;
-                        if (editorHead !== null && scope.config.bootstrapCssPath) {
-                            editorHead.innerHTML = "<link href='" + scope.config.bootstrapCssPath + "' rel='stylesheet'/>";
+                        if (editorHead !== null) {
+                            editorHead.innerHTML = "<link href='" + bootstappCssUrl + "' rel='stylesheet'/>";
                         }
                         editorBody = editorDoc.body;
                         if (!scope.config.height) scope.config.height = defaultHeight;
@@ -275,8 +262,7 @@ angular.module('watgRichtextModule.const', [])
         };
         $scope.watgRichTextConfig = {
             height: 200, //default 300
-            multiLine: true, //default true
-            bootstrapCssPath: '../bower_components/bootstrap/dist/css/bootstrap.min.css',
+            multiLine: true, //default true           
             fontSizes: [{
                 fontSizeName: 'Huge',
                 fontSize: 7
@@ -377,7 +363,7 @@ angular.module('watgRichtextModule.const', [])
             showRemoveLink: true,
             showSourceCode: true,
             Button: {
-                Style: "btn-info"
+                Style: "btn-primary btn-sm"
             }
         };
     }
