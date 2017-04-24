@@ -6,7 +6,6 @@
     angular.module('watgRichtextModule', [
         'ngRoute',
         'ngSanitize',
-        //'watgRichtextModule.templates',
         'watgRichtextModule.const'
     ]);
 })();

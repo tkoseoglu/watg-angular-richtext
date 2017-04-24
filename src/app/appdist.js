@@ -5,6 +5,6 @@
     "use strict";
 
     var modules = ['watgRichtextModule.templates', 'watgRichtextModule.const'];
-    var watgRichtextModule = angular.module('watgRichtextModule', modules);
+    angular.module('watgRichtextModule', modules);
 
 })();

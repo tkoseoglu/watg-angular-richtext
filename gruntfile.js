@@ -14,12 +14,12 @@ module.exports = function(grunt) {
             // Environment targets
             dev: {
                 constants: {
-                    "CONST_TEMPLATE_URL": "src/app/directives/templates/watgRichtextEditorTemplate.html"
+                    "CONST_RICHTEXTEDITOR_TEMPLATE_URL": "src/app/directives/templates/watgRichtextEditorTemplate.html"
                 }
             },
             dist: {
                 constants: {
-                    "CONST_TEMPLATE_URL": "app/directives/templates/watgRichtextEditorTemplate.html"
+                    "CONST_RICHTEXTEDITOR_TEMPLATE_URL": "app/directives/templates/watgRichtextEditorTemplate.html"
                 }
             }
         },

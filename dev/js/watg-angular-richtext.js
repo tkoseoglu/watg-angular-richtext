@@ -6,17 +6,16 @@
     angular.module('watgRichtextModule', [
         'ngRoute',
         'ngSanitize',
-        //'watgRichtextModule.templates',
         'watgRichtextModule.const'
     ]);
 })();
 (function() {
     "use strict";
     var app = angular.module('watgRichtextModule');
-    app.config(['$routeProvider', '$httpProvider', appConfig]);
+    app.config(['$httpProvider', '$routeProvider', appConfig]);
     app.run(appRun);
 
-    function appConfig($routeProvider, $httpProvider) {
+    function appConfig($httpProvider, $routeProvider) {
 
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -40,7 +39,7 @@
 })();
 angular.module('watgRichtextModule.const', [])
 
-.constant('CONST_TEMPLATE_URL', 'src/app/directives/templates/watgRichtextEditorTemplate.html')
+.constant('CONST_RICHTEXTEDITOR_TEMPLATE_URL', 'src/app/directives/templates/watgRichtextEditorTemplate.html')
 
 ;
 /**
@@ -48,12 +47,12 @@ angular.module('watgRichtextModule.const', [])
  */
 (function() {
     "use strict";
-    angular.module("watgRichtextModule").directive("watgRichtextEditor", ['CONST_TEMPLATE_URL', watgRichtext]);
+    angular.module("watgRichtextModule").directive("watgRichtextEditor", ['CONST_RICHTEXTEDITOR_TEMPLATE_URL', watgRichtext]);
 
-    function watgRichtext(CONST_TEMPLATE_URL) {
+    function watgRichtext(CONST_RICHTEXTEDITOR_TEMPLATE_URL) {
         return {
             restrict: 'E',
-            templateUrl: CONST_TEMPLATE_URL,
+            templateUrl: CONST_RICHTEXTEDITOR_TEMPLATE_URL,
             scope: {
                 id: "=",
                 input: "=",
@@ -62,6 +61,9 @@ angular.module('watgRichtextModule.const', [])
                 resetCount: "="
             },
             link: function(scope, element) {
+
+                console.log("Richtext Template URL %s", CONST_RICHTEXTEDITOR_TEMPLATE_URL);
+
                 var editor;
                 var editorDoc;
                 var editorHead;

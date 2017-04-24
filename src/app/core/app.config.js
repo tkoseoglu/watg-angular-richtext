@@ -1,10 +1,10 @@
 (function() {
     "use strict";
     var app = angular.module('watgRichtextModule');
-    app.config(['$routeProvider', '$httpProvider', appConfig]);
+    app.config(['$httpProvider', '$routeProvider', appConfig]);
     app.run(appRun);
 
-    function appConfig($routeProvider, $httpProvider) {
+    function appConfig($httpProvider, $routeProvider) {
 
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];

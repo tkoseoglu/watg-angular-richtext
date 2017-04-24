@@ -1,5 +1,5 @@
 angular.module('watgRichtextModule.const', [])
 
-.constant('CONST_TEMPLATE_URL', 'app/directives/templates/watgRichtextEditorTemplate.html')
+.constant('CONST_RICHTEXTEDITOR_TEMPLATE_URL', 'app/directives/templates/watgRichtextEditorTemplate.html')
 
 ;
