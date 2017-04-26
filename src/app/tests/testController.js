@@ -3,20 +3,24 @@
  */
 (function() {
     "use strict";
-    angular.module("watgRichtextModule").controller('testController', ['$scope', testController]);
+    angular.module("watgRichtextModule").controller('testController', ['$scope', '$interval', testController]);
 
-    function testController($scope) {
+    function testController($scope, $interval) {
         $scope.header = 'Richtext';
-        $scope.item = {
-            Input: "<b>test</b>",
-            Output: ""
+        var defaultContent = "<b>Test</b>";
+        $scope.dbRecord = {
+            //Description: defaultContent,
+            Description2: ""
         };
-        $scope.item2 = {
-            Input: "",
-            Output: ""
-        };
+
+        // var myInterval = $interval(function() {
+        //     $scope.dbRecord.Description = "<b>Test Updated</b>";
+        //     $interval.cancel(myInterval);
+        //     myInterval = undefined;
+        // }, 2000);
+
         $scope.resetCount = [];
-        $scope.resetCount2 = [];
+
         $scope.doSomething = function() {
             console.log('do something');
             $scope.resetCount.push(parseInt($scope.resetCount.length + 1));

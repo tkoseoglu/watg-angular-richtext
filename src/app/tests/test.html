@@ -1,23 +1,14 @@
 <h2>{{header}}</h2>
 <watg-richtext-editor id="'1'"
-    input="item.Input"
-    output="item.Output"
+    input="dbRecord.Description"
+    output="dbRecord.Description2"
     config="watgRichTextConfig"
     reset-count="resetCount"></watg-richtext-editor>
-<br>
-<watg-richtext-editor id="'2'"
-    input="item2.Input"
-    output="item2.Output"
-    config="watgRichTextConfig"
-    reset-count="resetCount2"></watg-richtext-editor>
-<br>
 <br>
 <button class="btn btn-primary"
     ng-click="doSomething()">Do Something
 </button>
 <br>
-<br>
 <h3>Output</h3>
-<div ng-bind-html="item.Output"></div>
-<br>
-<div ng-bind-html="item2.Output"></div>
+<pre>{{dbRecord|json}}</pre>
+<div ng-bind-html="dbRecord.Description2"></div>

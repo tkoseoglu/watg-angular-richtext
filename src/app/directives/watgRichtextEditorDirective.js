@@ -32,7 +32,17 @@
                 scope.showSourceEditor = false;
                 scope.menuEnabled = false;
                 scope.richTextSource = "";
-                scope.output = scope.input;
+                scope.output = "";
+
+                var inputWatch = scope.$watch('input', function(newValue) {
+                    scope.menuEnabled = false;
+                    if (newValue !== undefined && newValue !== null && newValue.length > 0) {
+                        scope.output = angular.copy(newValue);
+                        editorDoc.body.innerHTML = scope.output;
+                        scope.menuEnabled = true;
+                    }
+                });
+
 
                 scope.$watch('output', function() {
                     if (scope.output) {
