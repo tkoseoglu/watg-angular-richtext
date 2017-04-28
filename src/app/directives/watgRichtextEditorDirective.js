@@ -14,7 +14,8 @@
                 input: "=",
                 output: '=',
                 config: '=',
-                resetCount: "="
+                resetCount: "=",
+                outputChanged: "&"
             },
             link: function(scope, element) {
 
@@ -42,12 +43,15 @@
                         scope.menuEnabled = true;
                     }
                 });
-
-
                 scope.$watch('output', function() {
                     if (scope.output) {
                         scope.menuEnabled = true;
                     } else scope.menuEnabled = false;
+                    if (scope.output && scope.output !== scope.input) {
+                        scope.outputChanged({
+                            output: scope.output
+                        });
+                    }
                 });
                 scope.update = function() {
                     try {
