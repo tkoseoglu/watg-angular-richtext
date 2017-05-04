@@ -3,7 +3,7 @@
     <a class="btn btn-default btn-sm dropdown-toggle"
         ng-class="{'{{config.Button.Style}}':true}"
         data-toggle="dropdown"
-        ng-disabled="!menuEnabled"
+        ng-disabled=" showSourceEditor"
         title="Variables">
         <i class="fa fa-book"></i>&nbsp;
         <b class="caret"></b>
@@ -21,7 +21,7 @@
         ng-class="{'{{config.Button.Style}}':true}"
         data-toggle="dropdown"
         title="Font Size"
-        ng-disabled="!menuEnabled">
+        ng-disabled=" showSourceEditor">
         <i class="fa fa-font"></i>&nbsp;
         <b class="caret"></b>
     </a>
@@ -41,7 +41,7 @@
         ng-class="{'{{config.Button.Style}}':true}"
         data-toggle="dropdown"
         title="Font"
-        ng-disabled="!menuEnabled">
+        ng-disabled=" showSourceEditor">
         <i class="fa fa-text-height"></i>&nbsp;
         <b class="caret"></b>
     </a>
@@ -60,7 +60,7 @@
         ng-class="{'{{config.Button.Style}}':true}"
         data-toggle="dropdown"
         title="Font Color"
-        ng-disabled="!menuEnabled">
+        ng-disabled=" showSourceEditor">
         <i class="fa fa-paint-brush"></i>&nbsp;
         <b class="caret"></b>
     </a>
@@ -76,7 +76,7 @@
     </ul>
 </div>
 <div class="btn-group">
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         ng-show="config.showBold"
         type="button"
         class="btn btn-default btn-sm"
@@ -85,7 +85,7 @@
         ng-click="applyRichText('bold', null)">
       <i class="fa fa-bold"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         ng-show="config.showItalic"
         class="btn btn-default btn-sm"
@@ -94,7 +94,7 @@
         ng-click="applyRichText('italic', null)">
       <i class="fa fa-italic"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         ng-show="config.showStrikeThrough"
         class="btn btn-default btn-sm"
@@ -103,7 +103,7 @@
         ng-click="applyRichText('strikethrough', null)">
       <i class="fa fa-strikethrough"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -114,7 +114,7 @@
    </button>
 </div>
 <div class="btn-group">
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -123,7 +123,7 @@
         ng-click="applyRichText('insertunorderedlist', null)">
       <i class="fa fa-list-ul"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -132,7 +132,7 @@
         ng-click="applyRichText('insertorderedlist', null)">
       <i class="fa fa-list-ol"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -141,7 +141,7 @@
         ng-click="applyRichText('outdent', null)">
       <i class="fa fa-dedent"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -152,7 +152,7 @@
    </button>
 </div>
 <div class="btn-group">
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -161,7 +161,7 @@
         ng-click="applyRichText('justifyleft', null)">
       <i class="fa fa-align-left"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -170,7 +170,7 @@
         ng-click="applyRichText('justifycenter', null)">
       <i class="fa fa-align-center"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -179,7 +179,7 @@
         ng-click="applyRichText('justifyright', null)">
       <i class="fa fa-align-right"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -190,7 +190,7 @@
    </button>
 </div>
 <div class="btn-group">
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -199,7 +199,7 @@
         ng-click="applyRichText('undo', null)">
       <i class="fa fa-undo"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -210,7 +210,7 @@
    </button>
 </div>
 <div class="btn-group">
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -220,7 +220,7 @@
         data-target="#{{hyperlinkModalId}}">
       <i class=" fa fa-link"></i>
    </button>
-    <button ng-disabled="!menuEnabled"
+    <button ng-disabled=" showSourceEditor"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
         title="Remove Hyperlink"
@@ -231,7 +231,6 @@
 </div>
 <div class="btn-group">
     <button ng-click="showSourceEditor = !showSourceEditor"
-        ng-disabled="!menuEnabled"
         type="button"
         class="btn btn-default btn-sm"
         ng-class="{'{{config.Button.Style}}':true}"
@@ -241,7 +240,9 @@
    </button>
 </div>
 
-<!--iframe-->
+
+{{showSourceEditor}}
+
 <div>
     <iframe class="watgRichtext"
         ng-hide="showSourceEditor"></iframe>
@@ -251,6 +252,8 @@
         class="form-control"
         rows="10"></textarea>
 </div>
+
+
 <div id="{{hyperlinkModalId}}"
     class="modal fade">
     <div class="modal-dialog">
@@ -259,17 +262,17 @@
                 <button type="button"
                     class="close"
                     data-dismiss="modal">
-               <span aria-hidden="true">&times;</span>
-               <span
-                  class="sr-only">Close</span>
-            </button>
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
                 <h4 class="modal-title"
                     id="myModalLabel">Create Link</h4>
             </div>
             <div class="modal-body">
                 <input type="text"
                     ng-model="linkUrl"
-                    class="form-control" />
+                    class="form-control"
+                    autofocus />
             </div>
             <div class="modal-footer">
                 <button type="button"
@@ -277,11 +280,11 @@
                     data-dismiss="modal"
                     ng-disabled="!linkUrl"
                     ng-click="applyRichText('createLink', linkUrl)">Apply
-            </button>
+                </button>
                 <button type="button"
                     class="btn btn-primary"
                     data-dismiss="modal">Cancel
-            </button>
+                </button>
             </div>
         </div>
     </div>
