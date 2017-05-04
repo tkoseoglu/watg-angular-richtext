@@ -58,7 +58,8 @@ angular.module('watgRichtextModule.const', [])
                 input: "=",
                 output: '=',
                 config: '=',
-                resetCount: "="
+                resetCount: "=",
+                outputChanged: "&"
             },
             link: function(scope, element) {
 
@@ -74,24 +75,28 @@ angular.module('watgRichtextModule.const', [])
                 var bootstappCssUrl = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
                 scope.hyperlinkModalId = "hyperlinkeModal" + scope.id;
                 scope.showSourceEditor = false;
-                scope.menuEnabled = false;
                 scope.richTextSource = "";
                 scope.output = "";
 
                 var inputWatch = scope.$watch('input', function(newValue) {
-                    scope.menuEnabled = false;
                     if (newValue !== undefined && newValue !== null && newValue.length > 0) {
                         scope.output = angular.copy(newValue);
                         editorDoc.body.innerHTML = scope.output;
-                        scope.menuEnabled = true;
                     }
                 });
-
-
                 scope.$watch('output', function() {
-                    if (scope.output) {
-                        scope.menuEnabled = true;
-                    } else scope.menuEnabled = false;
+                    if (scope.output && scope.output !== scope.input) {
+                        scope.outputChanged({
+                            output: scope.output
+                        });
+                        scope.update();
+                    }
+                });
+                scope.$watch("richTextSource", function(newValue) {
+                    if (newValue !== undefined) {
+                        scope.output = newValue;
+                        editorDoc.body.innerHTML = newValue;
+                    }
                 });
                 scope.update = function() {
                     try {
