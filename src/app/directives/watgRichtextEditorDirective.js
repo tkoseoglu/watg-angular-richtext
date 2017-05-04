@@ -40,16 +40,19 @@
                         editorDoc.body.innerHTML = scope.output;
                     }
                 });
-                scope.$watch('output', function() {
-                    if (scope.output && scope.output !== scope.input) {
-                        scope.outputChanged({
-                            output: scope.output
-                        });
-                        scope.update();
+                scope.$watch('output', function(newValue) {
+                    if (newValue !== undefined) {
+                        if (newValue && newValue !== scope.input) {
+                            scope.outputChanged({
+                                output: newValue
+                            });
+                            scope.update();
+                        }
                     }
+
                 });
                 scope.$watch("richTextSource", function(newValue) {
-                    if (newValue !== undefined) {
+                    if (newValue !== undefined && newValue) {
                         scope.output = newValue;
                         editorDoc.body.innerHTML = newValue;
                     }
